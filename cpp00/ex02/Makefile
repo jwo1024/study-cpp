@@ -6,21 +6,19 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/17 19:05:21 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/17 21:50:33 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= my_awsome_phonebook
+NAME	= the_job_of_your_dreams
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
-#HEADER	= ./PhoneBook.hpp\
-		  ./Contact.hpp
+#HEADER	= ./Account.hpp
 
-SRC		= ./main.cpp\
-		  ./PhoneBook.cpp\
-		  ./Contact.cpp
+SRC		= ./tests.cpp\
+		  ./Account.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 

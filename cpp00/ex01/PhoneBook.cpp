@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/16 18:46:09 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/17 19:03:56 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,44 @@
 #include	<iostream>
 #include	<iomanip>
 
-PhoneBook::PhoneBook() {
+PhoneBook::PhoneBook(){
 	this->cnt = 0;
 }
 
-// 실패시 정의 ?해야 하나 ?
-// 입력 받고  
-void	PhoneBook::add_contact(Contact new_contact) {
+PhoneBook::~PhoneBook(){}
+
+void	PhoneBook::add_contact(Contact new_contact){
 	contact[cnt] = new_contact;
 	cnt++;
 	if (cnt == 8)
 		cnt = 0;
 }
 
-void	PhoneBook::search_contact(int index) {
-	std::string str;
+void	PhoneBook::search_contact(int index){
+	std::string	str;
 
-	if (index > 7) // 0 ~ 7
+	if (index > 7 || index < 0)
+	{
+		std::cout << "Wrong index input" << std::endl;
 		return ;
-//	PhoneBook::show_contact_info(index); // ?
-	std::cout << std::setw(10) << std::right << index;
+	}
+	std::cout << std::setw(10) << std::right << index << '|';
 	str = contact[index].get_firstname();
-	PhoneBook::show_contact_info(str);
+	PhoneBook::cout_info(str);
+	std::cout << '|';
 	str = contact[index].get_lastname();
-	PhoneBook::show_contact_info(str);
+	PhoneBook::cout_info(str);
+	std::cout << '|';
 	str = contact[index].get_nickname();
-	PhoneBook::show_contact_info(str);
+	PhoneBook::cout_info(str);
 	std::cout << std::endl;
 }
 
-void	PhoneBook::show_contact_info(std::string str)
-{
-	// str 존재하지 않을 때
-	if (str.length() > 10) // 함수화 ? 
+void	PhoneBook::cout_info(std::string str){
+	if (str.length() > 10)
+	{
 		str.replace(9, 1, ".");
-	std::cout << std::setw(10) << std::right << str; //(std::setfill())
+		str.erase(str.begin() + 10, str.end());
+	}
+	std::cout << std::setw(10) << std::right << str;
 }
-

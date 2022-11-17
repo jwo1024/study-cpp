@@ -6,14 +6,14 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/16 16:45:43 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/17 18:46:38 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= megaphone
 
 CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98
+CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./megaphone.cpp
 
