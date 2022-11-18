@@ -6,13 +6,9 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:30:02 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/17 22:11:15 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 14:42:55 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
-
-//index
-// amount
-// created..
 
 #include	<iostream>
 #include	<ctime>
@@ -25,8 +21,7 @@ int	Account::_totalNbWithdrawals;
 
 Account::Account( int initial_deposit ){
 	_nbAccounts += 1;
-	_totalAmount += initial_deposit; // 이건 왜 this 가 되었지? 
-
+	_totalAmount += initial_deposit;
 	this->_accountIndex = this->_nbAccounts - 1;
 	this->_amount = initial_deposit;
 	this->_nbDeposits = 0;
@@ -52,7 +47,7 @@ void	Account::_displayTimestamp( void ){
 	time(&raw_time);
 	timeinfo = localtime(&raw_time);
 	strftime(buf, 80, "[%Y%m%d_%H%M%S]", timeinfo);
-	std::cout << buf;
+	std::cout << buf << " ";
 	// https://modoocode.com/122
 }
 
@@ -109,7 +104,7 @@ bool	Account::makeWithdrawal( int withdrawal ){
 	this->_amount -= withdrawal;
 	std::cout << "amount:" << this->_amount << ";";
 	this->_nbWithdrawals++;
-	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl; // 여기서 ++ 하면은 적용 되나 ?
+	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 	_totalNbWithdrawals++;
 	_totalAmount -= withdrawal;
 	return (true);
@@ -124,6 +119,5 @@ void	Account::displayStatus( void ) const{
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "deposits:" << this->_nbDeposits << ";";
-	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+	std::cout << "withdrawals:" << this->_nbWithdrawals << std::endl;
 }
-
