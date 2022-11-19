@@ -6,11 +6,11 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/19 16:14:20 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/19 15:50:12 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= harl
+NAME	= harlFilter
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
