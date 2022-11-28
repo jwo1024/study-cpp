@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/17 19:03:56 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/24 20:44:10 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 #include	<iostream>
 #include	<iomanip>
 
-PhoneBook::PhoneBook(){
+PhoneBook::PhoneBook()
+{
 	this->cnt = 0;
 }
 
-PhoneBook::~PhoneBook(){}
+PhoneBook::~PhoneBook()
+{
+	
+}
 
-void	PhoneBook::add_contact(Contact new_contact){
+void	PhoneBook::add_contact(Contact new_contact)
+{
 	contact[cnt] = new_contact;
 	cnt++;
 	if (cnt == 8)
 		cnt = 0;
 }
 
-void	PhoneBook::search_contact(int index){
+void	PhoneBook::search_contact(int index)
+{
 	std::string	str;
 
 	if (index > 7 || index < 0)
@@ -47,7 +53,8 @@ void	PhoneBook::search_contact(int index){
 	std::cout << std::endl;
 }
 
-void	PhoneBook::cout_info(std::string str){
+void	PhoneBook::cout_info(std::string str)
+{
 	if (str.length() > 10)
 	{
 		str.replace(9, 1, ".");

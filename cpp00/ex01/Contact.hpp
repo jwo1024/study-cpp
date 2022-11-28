@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:03:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/17 19:16:36 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/24 20:31:55 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include	<string>
 
-class Contact {
+class Contact 
+{
 	std::string	last_name;
 	std::string	first_name;
 	std::string	nick_name;

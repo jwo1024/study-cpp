@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/17 22:13:12 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/24 20:44:14 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include	"Contact.hpp"
 
-class PhoneBook {
+class PhoneBook
+{
  private:
 	Contact	contact[8];
 	int		cnt;

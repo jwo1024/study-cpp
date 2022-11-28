@@ -6,20 +6,20 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:59:28 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/17 19:11:38 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/24 20:34:33 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<iostream>
-#include	<string>
 #include	"PhoneBook.hpp"
+#include	<iostream>
 
 int		get_string_cin(std::string *str);
 int 	get_int_cin(int	*num);
 void	search_contact(PhoneBook *phone_book);
 void	add_contact(PhoneBook *phone_book);
 
-int	main(void){
+int	main(void)
+{
 	std::string	cmd;
 	PhoneBook	phone_book;
 

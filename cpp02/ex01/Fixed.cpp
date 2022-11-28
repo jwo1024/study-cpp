@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:45:54 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/21 17:16:39 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/21 18:42:15 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ Fixed::Fixed(const Fixed &fixed)
 
 Fixed::Fixed(const int num)
 {
-	this->fixed_point = num;
+	this->fixed_point = num << fraction;
 }
 
 Fixed::Fixed(const float num)
 {
-	this->fixed_point = num; // ??????????????
+	this->fixed_point = roundf(num * (1 << 8)); // ??????????????
 	// It converts it to the corresponding fixed-point value.
 }
 
@@ -53,13 +53,13 @@ Fixed::~Fixed( void )
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits memeber function called" << std::endl;
+//	std::cout << "getRawBits memeber function called" << std::endl;
 	return this->fixed_point;
 }
 
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "setRawBits memeber function called" << std::endl;
+//	std::cout << "setRawBits memeber function called" << std::endl;
 	this->fixed_point = raw;
 }
 
@@ -67,19 +67,19 @@ float	Fixed::toFloat( void ) const
 {
 	///
 	
-	return this->getRawBits();
+	return (float)this->getRawBits() / (1 << fraction);
 }
 
 int	Fixed::toInt( void ) const
 {
 	///
 
-	return this->getRawBits();
+	return this->getRawBits() >> fraction;
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
-	os << fixed.getRawBits();
+	os << fixed.toFloat();
 	// .
 	// 
 	return os;

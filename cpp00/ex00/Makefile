@@ -6,26 +6,26 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/17 18:46:38 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/24 17:38:12 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= megaphone
 
-CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX		= c++
+CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./megaphone.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 
 %.o : %.cpp
-		$(CC) $(CFLAG) -c -o $@ $^
+		$(CXX) $(CXXFLAG) -c -o $@ $^
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		$(CC) $(CFLAG) -o $@ $^
+		$(CXX) $(CXXFLAG) -o $@ $^
 
 clean :
 		rm -f $(OBJS)

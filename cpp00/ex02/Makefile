@@ -6,29 +6,27 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/17 21:50:33 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/24 20:29:30 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= the_job_of_your_dreams
 
-CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
-
-#HEADER	= ./Account.hpp
+CXX		= c++
+CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./tests.cpp\
-		  ./Account.cpp
+		  ./AcXXount.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 
-%.o : %.cpp #$(HEADER)
-		$(CC) $(CFLAG) -c -o $@ $^
+%.o : %.cpp
+		$(CXX) $(CXXFLAG) -c -o $@ $^
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		$(CC) $(CFLAG) -o $@ $^
+		$(CXX) $(CXXFLAG) -o $@ $^
 
 clean :
 		rm -f $(OBJS)
