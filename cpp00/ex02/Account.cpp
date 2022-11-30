@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:30:02 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/18 14:42:55 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 13:19:53 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Account::~Account( void ){
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "closed" << std::endl;
-} // 왜 cnt index 가 반대로 흘러가지 ? 
+}
 
 void	Account::_displayTimestamp( void ){
 	time_t	raw_time;
@@ -48,12 +48,11 @@ void	Account::_displayTimestamp( void ){
 	timeinfo = localtime(&raw_time);
 	strftime(buf, 80, "[%Y%m%d_%H%M%S]", timeinfo);
 	std::cout << buf << " ";
-	// https://modoocode.com/122
 }
 
 
 int	Account::getNbAccounts( void ){
-	return (_nbAccounts);	// ?
+	return (_nbAccounts);
 }
 
 int	Account::getTotalAmount( void ){

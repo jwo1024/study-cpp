@@ -6,7 +6,7 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/18 15:02:20 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/30 16:42:21 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME	= BraiiiiiiinnnzzzZ
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
-#HEADER	= ./Account.hpp
-
 SRC		= ./main.cpp\
 		  ./Zombie.cpp\
 		  ./newZombie.cpp\
@@ -24,7 +22,7 @@ SRC		= ./main.cpp\
 
 OBJS	= $(SRC:.cpp=.o)
 
-%.o : %.cpp #$(HEADER)
+%.o : %.cpp
 		$(CC) $(CFLAG) -c -o $@ $^
 
 all : $(NAME)

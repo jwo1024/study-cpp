@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:54:09 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/16 16:45:49 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 13:04:21 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[]){
 		for (int j = 1; j < argc; j++)
 		{
 			for (int i = 0; i < (int)std::strlen(argv[j]); i++)
-				argv[j][i] = (char)std::toupper(argv[j][i]);
+				argv[j][i] = static_cast<char>(std::toupper(argv[j][i]));
 			std::cout << argv[j];
 		}
 		std::cout << std::endl;

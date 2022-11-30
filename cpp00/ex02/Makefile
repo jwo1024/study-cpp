@@ -6,7 +6,7 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/24 20:29:30 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/11/30 14:13:05 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX		= c++
 CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./tests.cpp\
-		  ./AcXXount.cpp
+		  ./Account.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 

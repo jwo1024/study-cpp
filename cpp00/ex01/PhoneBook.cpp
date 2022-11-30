@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/24 20:44:10 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 13:34:36 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 #include	<iostream>
 #include	<iomanip>
 
-PhoneBook::PhoneBook()
-{
+PhoneBook::PhoneBook( void ){
 	this->cnt = 0;
 }
 
-PhoneBook::~PhoneBook()
-{
-	
-}
+PhoneBook::~PhoneBook( void ){}
 
-void	PhoneBook::add_contact(Contact new_contact)
-{
-	contact[cnt] = new_contact;
+void	PhoneBook::add_contact(const Contact new_contact) {
+	this->contact[cnt] = new_contact;
 	cnt++;
 	if (cnt == 8)
 		cnt = 0;
 }
 
-void	PhoneBook::search_contact(int index)
-{
+void	PhoneBook::search_contact(const int index) const{
 	std::string	str;
 
 	if (index > 7 || index < 0)
@@ -42,19 +36,18 @@ void	PhoneBook::search_contact(int index)
 		return ;
 	}
 	std::cout << std::setw(10) << std::right << index << '|';
-	str = contact[index].get_firstname();
+	str = this->contact[index].get_firstname();
 	PhoneBook::cout_info(str);
 	std::cout << '|';
-	str = contact[index].get_lastname();
+	str = this->contact[index].get_lastname();
 	PhoneBook::cout_info(str);
 	std::cout << '|';
-	str = contact[index].get_nickname();
+	str = this->contact[index].get_nickname();
 	PhoneBook::cout_info(str);
 	std::cout << std::endl;
 }
 
-void	PhoneBook::cout_info(std::string str)
-{
+void	PhoneBook::cout_info(std::string str) const{
 	if (str.length() > 10)
 	{
 		str.replace(9, 1, ".");
