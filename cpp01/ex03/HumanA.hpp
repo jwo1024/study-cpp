@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:58:38 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/30 19:15:54 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 19:33:22 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	~HumanA( void );
 
 	void	attack( void ) const;
+	void	setWeapon( Weapon &set_weapon );
 };
 
 #endif
