@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:58:38 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/18 18:24:24 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 19:15:54 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ private:
 	std::string	name;
 	Weapon		&weapon;
 public:
-	HumanA(std::string set_name, Weapon &set_weapon);
-	~HumanA();
+	HumanA( std::string set_name, Weapon &set_weapon );
+	~HumanA( void );
 
-	void	attack();
-	void	setWeapon(Weapon &set_weapon);
+	void	attack( void ) const;
 };
 
 #endif

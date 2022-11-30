@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:01:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/18 18:01:11 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 19:07:53 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int main() {
 		jim.attack();
 		club.setType("some other type of club"); jim.attack();
 	}
+
+//	system("leaks unnecessary_violence");
 	return 0;
 }

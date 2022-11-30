@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:53:57 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/18 18:24:28 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 19:02:22 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 
 # include	<string>
 
-class Weapon
-{
+class Weapon{
 private:
 	std::string	type;
 public:
-	Weapon(/* args */);
-	Weapon(std::string set_type);
-	~Weapon();
+	Weapon( void );
+	Weapon( std::string set_type );
+	~Weapon( void );
 
-	std::string getType();
-	void setType(std::string set_type);
+	const std::string& getType( void ) const;
+	void setType( std::string set_type );
 };
 
 #endif
