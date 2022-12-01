@@ -6,28 +6,26 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/11/18 19:36:13 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/12/01 12:54:48 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= sed_is_for_losers
 
-CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
-
-#HEADER	= ./Account.hpp
+CXX		= c++
+CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./main.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 
-%.o : %.cpp #$(HEADER)
-		$(CC) $(CFLAG) -c -o $@ $^
+%.o : %.cpp
+		$(CXX) $(CXXFLAG) -c -o $@ $^
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		$(CC) $(CFLAG) -o $@ $^
+		$(CXX) $(CXXFLAG) -o $@ $^
 
 clean :
 		rm -f $(OBJS)

@@ -66,6 +66,9 @@
 		"stack": "cpp",
 		"__functional_03": "cpp",
 		"memory_resource": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"__bits": "cpp",
+		"clocale": "cpp",
+		"cerrno": "cpp"
 	}
 }

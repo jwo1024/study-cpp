@@ -6,29 +6,16 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:05:34 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/19 16:14:10 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 12:52:17 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"Harl.hpp"
 #include	<iostream>
 
-Harl::Harl( void ){ }
+Harl::Harl( void ){}
 
-Harl::~Harl( void ){ }
-
-enum e_level	check_level( std::string level ){
-	if (level.compare("DEBUG") == 0)
-		return (L_DEBUG);
-	else if (level.compare("INFO") == 0)
-		return (L_INFO);
-	else if (level.compare("WARNING") == 0)
-		return (L_WARNING);
-	else if (level.compare("ERROR") == 0)
-		return (L_ERROR);
-	else
-		return L_DEFAULT;
-}
+Harl::~Harl( void ){}
 
 void Harl::debug( void ){
 	std::cout << "[ DEBUG ]" << std::endl;
@@ -55,24 +42,12 @@ void Harl::error( void ){
 }
 
 void    Harl::complain( std::string level ){
-	enum e_level	lev;
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*fptr[4])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	lev = check_level(level);
-	switch (lev)
+	for (int i = 0; i < 4; i++)
 	{
-		case L_DEBUG:
-			this->debug();
-			break;
-		case L_INFO:
-			this->info();
-			break;
-		case L_WARNING:
-			this->warning();
-			break;
-		case L_ERROR:
-			this->error();
-			break;
-		default:
-			break;
- 	}
+		if (levels[i] == level)
+			(this->*fptr[i])();
+	}
 }
