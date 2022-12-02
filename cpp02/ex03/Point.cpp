@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/02 23:29:49 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 02:13:20 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#include	"Point.hpp"
 
-#include	<iostream>
 
-class Fixed{
-private:
-	int	fixed_point;
-	const static int fraction = 8;
-public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed( int const num );
-	Fixed( float const num );
-	Fixed &operator=( Fixed const &origin);
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
-	float	toFloat( void ) const;
-	int		toInt( void ) const;
-};
+Point::Point( void ) : x_(0), y_(0){}
 
-std::ostream &operator<<( std::ostream &os, Fixed const &fixed );
+Point::Point( float const x, float const y ) : x_(x), y_(y){}
 
-#endif
+Point::Point( Point const &origin ) 
+		: x_(origin.getX()), y_(origin.getY()){}
+
+Point &Point::operator=( Point const &origin ) {
+	const_cast<Fixed&>(x_) = origin.getX(); // ???
+	const_cast<Fixed&>(y_) = origin.getY(); //??
+	return *this;
+}
+
+Point::~Point( void ){}
+
+Fixed	Point::getX( void ) const{
+	return x_;
+}
+
+Fixed	Point::getY( void ) const{
+	return y_;
+}
+

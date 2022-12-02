@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/02 23:29:49 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 02:27:39 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef	POINT_HPP
+# define POINT_HPP
 
-#include	<iostream>
+#include	"Fixed.hpp"
 
-class Fixed{
+class Point{
 private:
-	int	fixed_point;
-	const static int fraction = 8;
+	Fixed const x_;
+	Fixed const y_;
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed( int const num );
-	Fixed( float const num );
-	Fixed &operator=( Fixed const &origin);
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
-	float	toFloat( void ) const;
-	int		toInt( void ) const;
+	Point( void );
+	Point( float const x, float const y );
+	Point( Point const &origin );
+	Point &operator=( Point const &origin );
+	~Point( void );
+
+	Fixed	getX( void ) const;
+	Fixed	getY( void ) const;
 };
 
-std::ostream &operator<<( std::ostream &os, Fixed const &fixed );
+bool bsp( Point const a, Point const b, Point const c, Point const point );
 
 #endif

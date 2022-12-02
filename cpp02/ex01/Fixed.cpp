@@ -6,81 +6,61 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:45:54 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/11/21 18:42:15 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 23:30:17 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"Fixed.hpp"
 #include	<iostream>
+#include	<cmath>
 
-Fixed::Fixed( void )
-{
+Fixed::Fixed( void ){
 	std::cout << "Default constructor called" << std::endl;
 	this->fixed_point = 0;
 }
 
-Fixed::Fixed(const Fixed &fixed)
-{
+Fixed::Fixed( Fixed const &origin ){
 	std::cout << "Copy constructor called" << std::endl;
-	*this = fixed;
-	// *this = fixed;
-	// 같은 주소를 갖게되나 ? 아님 내용을 복사만 하나? 아직 이해가 부족한 것 같다. 
-	// const 니까 괜찮지 않나
+	*this = origin;
 }
 
-Fixed::Fixed(const int num)
-{
-	this->fixed_point = num << fraction;
+Fixed::Fixed( int const num ){
+	std::cout << "Int constructor called" << std::endl;
+	this->fixed_point = num << this->fraction;
 }
 
-Fixed::Fixed(const float num)
-{
-	this->fixed_point = roundf(num * (1 << 8)); // ??????????????
-	// It converts it to the corresponding fixed-point value.
+Fixed::Fixed( float const num ){
+	std::cout << "Float constructor called" << std::endl;
+	this->fixed_point = roundf(num * (1 << this->fraction));
 }
 
-Fixed &Fixed::operator=(const Fixed &fixed)
-{
+Fixed &Fixed::operator=( Fixed const &origin ){
 	std::cout << "Copy assaignment operator called" << std::endl;
-	this->fixed_point = fixed.getRawBits();
+	this->fixed_point = origin.getRawBits();
 	return *this;
 }
 
-Fixed::~Fixed( void )
-{
+Fixed::~Fixed( void ){
 	std::cout << "Destructor called" << std::endl;
 }
 
-int	Fixed::getRawBits( void ) const
-{
-//	std::cout << "getRawBits memeber function called" << std::endl;
+int	Fixed::getRawBits( void ) const{
 	return this->fixed_point;
 }
 
-void	Fixed::setRawBits( int const raw )
-{
-//	std::cout << "setRawBits memeber function called" << std::endl;
+void	Fixed::setRawBits( int const raw ){
 	this->fixed_point = raw;
 }
 
-float	Fixed::toFloat( void ) const
-{
-	///
-	
+float	Fixed::toFloat( void ) const{
 	return (float)this->getRawBits() / (1 << fraction);
 }
 
-int	Fixed::toInt( void ) const
-{
-	///
-
+int	Fixed::toInt( void ) const{
 	return this->getRawBits() >> fraction;
 }
 
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
-{
+std::ostream &operator<<( std::ostream &os, Fixed const &fixed ){
 	os << fixed.toFloat();
-	// .
-	// 
 	return os;
 }

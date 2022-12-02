@@ -6,7 +6,7 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/12/02 16:43:17 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/12/03 00:15:16 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CXX		= c++
 CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC		= ./main.cpp\
-		  ./Fixed.cpp
+		  ./Fixed.cpp\
+		  ./Point.cpp\
+		  ./bsp.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 

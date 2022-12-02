@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:38:46 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/01 12:05:08 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 12:14:08 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[]){
 		std::cout << "wrong input argc" << std::endl;
 		return 1;
 	}
-	if (replace_file(argv[1], argv[2], argv[3]) == -1)
+	else if (replace_file(argv[1], argv[2], argv[3]) == -1)
 		return 1;
 	return 0;
 }
