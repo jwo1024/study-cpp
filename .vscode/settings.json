@@ -69,6 +69,9 @@
 		"filesystem": "cpp",
 		"__bits": "cpp",
 		"clocale": "cpp",
-		"cerrno": "cpp"
+		"cerrno": "cpp",
+		"cat.hpp": "c",
+		"animal.hpp": "c",
+		"__functional_base_03": "cpp"
 	}
 }

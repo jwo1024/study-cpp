@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 12:06:55 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 23:15:16 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/04 21:14:49 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-class Fixed{
-private:
-	int	fixed_point;
-	const static int fraction = 8;
+#include	<string>
+
+class Animal{
+protected:
+	std::string type;
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed &operator=( Fixed const &origin );
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	Animal( void );
+	Animal( const Animal &origin );
+	virtual ~Animal( void );
+
+	Animal	&operator=( const Animal &origin );
+
+	std::string		getType( void ) const;
+	virtual void	makeSound( void ) const = 0;
 };
 
 #endif

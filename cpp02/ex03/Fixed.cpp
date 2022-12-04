@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:45:54 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/02 23:49:17 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 11:54:40 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,13 @@ Fixed const	Fixed::operator--( int ){
 
 /* static member func operator overloading */
 
-Fixed const &Fixed::max( Fixed &fixed1, Fixed &fixed2 ){
+Fixed &Fixed::max( Fixed &fixed1, Fixed &fixed2 ){
 	if (fixed1 >= fixed2)
 		return fixed1;
 	return fixed2;
 }
 
-Fixed const &Fixed::min( Fixed &fixed1, Fixed &fixed2 ){
+Fixed &Fixed::min( Fixed &fixed1, Fixed &fixed2 ){
 	if (fixed1 <= fixed2)
 		return fixed1;
 	return fixed2;

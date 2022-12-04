@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/02 23:28:29 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 11:54:34 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ public:
 	Fixed const operator++( int );
 	Fixed const operator--( int );
 
-	static Fixed const &max( Fixed &fixed1, Fixed &fixed2 );
-	static Fixed const &min( Fixed &fixed1, Fixed &fixed2 );
+	static Fixed &max( Fixed &fixed1, Fixed &fixed2 );
+	static Fixed &min( Fixed &fixed1, Fixed &fixed2 );
 	static Fixed const &max( Fixed const &fixed1, Fixed const &fixed2 );
 	static Fixed const &min( Fixed const &fixed1, Fixed const &fixed2 );
 };

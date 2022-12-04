@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 12:06:55 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 13:52:33 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/03 22:58:36 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-class Fixed{
-private:
-	int	fixed_point;
-	const static int fraction = 8;
+# include	"ClapTrap.hpp"
+
+class FragTrap : virtual public ClapTrap{
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed &operator=( Fixed const &origin );
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	FragTrap( void );
+	FragTrap( std::string name );
+	FragTrap( FragTrap const &origin );
+	~FragTrap( void );
+
+	FragTrap	&operator=( FragTrap const &origin );
+
+	void	attack( const std::string& target );
+	void	hiFivesGuys( void );
 };
 
 #endif

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   WrongWrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 12:06:55 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 23:15:16 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/04 13:42:30 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-class Fixed{
-private:
-	int	fixed_point;
-	const static int fraction = 8;
+#include	<string>
+
+class WrongAnimal{
+protected:
+	std::string type;
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed &operator=( Fixed const &origin );
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	WrongAnimal( void );
+	WrongAnimal( const WrongAnimal &origin );
+	virtual ~WrongAnimal( void );
+
+	WrongAnimal	&operator=( const WrongAnimal &origin );
+
+	std::string	getType( void ) const;
+	void		makeSound( void ) const;
 };
 
 #endif

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 12:06:55 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/04 13:56:54 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-class Fixed{
-private:
-	int	fixed_point;
-	const static int fraction = 8;
+#include	"Animal.hpp"
+
+class Cat : public Animal{
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed &operator=( Fixed const &origin );
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	Cat( void );
+	Cat( const Cat &origin );
+	~Cat( void );
+
+	Cat	&operator=( const Cat &origin );
+
+	void	makeSound( void ) const;
 };
 
 #endif

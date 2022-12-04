@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 15:34:43 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 12:06:55 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/04 17:06:57 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FIXED_HPP
-# define FIXED_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-class Fixed{
+#include	"Animal.hpp"
+#include	"Brain.hpp"
+
+class Dog : public Animal{
 private:
-	int	fixed_point;
-	const static int fraction = 8;
+	Brain	*brain;
 public:
-	Fixed( void );
-	Fixed( Fixed const &origin );
-	Fixed &operator=( Fixed const &origin );
-	~Fixed( void );
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	Dog( void );
+	Dog( Dog const &origin );
+	~Dog( void );
+
+	Dog	&operator=( Dog const &origin );
+
+	void	makeSound( void ) const;
+	Brain	*getBrain( void ) const;
 };
 
 #endif
