@@ -21,7 +21,6 @@ int	main ( void ){
 		FragTrap	c = a;
 		FragTrap	d;
 
-
 		std::cout << std::endl;
 		a.attack( "target1" );
 		a.takeDamage( 5 );

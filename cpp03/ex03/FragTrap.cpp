@@ -14,25 +14,25 @@
 #include	<iostream>
 
 FragTrap::FragTrap( void ){
+	std::cout << "FragTrap : Default Constructor called" << std::endl;
 	this->_name = "unknown";
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
-	std::cout << "FragTrap : Default Constructor called" << std::endl;
 }
 
 FragTrap::FragTrap( std::string name ) : ClapTrap(name){
+	std::cout << "FragTrap : Param Constructor called : " << this->_name << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
-	std::cout << "FragTrap : Param Constructor called : " << this->_name << std::endl;
 }
 
 FragTrap::FragTrap( FragTrap const &origin ) : ClapTrap(origin.getName()){
+	std::cout << "FragTrap : Copy Constructor called : " << this->_name << std::endl;
 	this->_hit_points = origin.getHitPoints();
 	this->_energy_points = origin.getEnergyPoints();
 	this->_attack_damage = origin.getAttackDamage();
-	std::cout << "FragTrap : Copy Constructor called : " << this->_name << std::endl;
 }
 
 FragTrap::~FragTrap( void ){

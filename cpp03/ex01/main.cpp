@@ -21,7 +21,6 @@ int	main ( void ){
 		ScavTrap	c = a;
 		ScavTrap	d;
 
-
 		std::cout << std::endl;
 		a.attack( "target1" );
 		a.takeDamage( 5 );

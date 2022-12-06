@@ -14,25 +14,25 @@
 #include	<iostream>
 
 ScavTrap::ScavTrap( void ){
+	std::cout << "ScavTrap : Default Constructor called" << std::endl;
 	this->_name = "unknown";
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
-	std::cout << "ScavTrap : Default Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name){
+	std::cout << "ScavTrap : Param Constructor called : " << this->_name << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
-	std::cout << "ScavTrap : Param Constructor called : " << this->_name << std::endl;
 }
 
 ScavTrap::ScavTrap( ScavTrap const &origin ) : ClapTrap(origin.getName()){
+	std::cout << "ScavTrap : Copy Constructor called : " << this->_name << std::endl;
 	this->_hit_points = origin.getHitPoints();
 	this->_energy_points = origin.getEnergyPoints();
 	this->_attack_damage = origin.getAttackDamage();
-	std::cout << "ScavTrap : Copy Constructor called : " << this->_name << std::endl;
 }
 
 ScavTrap::~ScavTrap( void ){

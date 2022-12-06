@@ -14,24 +14,24 @@
 #include	<iostream>
 
 DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap(){
+	std::cout << "DiamondTrap : Default Constructor called" << std::endl;
 	this->_name	= "unknown";
 	ClapTrap::_name	= this->_name + "_clap_name";
 	ClapTrap::_energy_points = 50;
-	std::cout << "DiamondTrap : Default Constructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap( std::string name ) 
 	: ClapTrap(name), ScavTrap(name), FragTrap(name){
 	this->_name = name;
+	std::cout << "DiamondTrap : Param Constructor called : " << this->_name << std::endl;
 	ClapTrap::_name	= this->_name + "_clap_name";
 	ClapTrap::_energy_points = 50;
-	std::cout << "DiamondTrap : Param Constructor called : " << this->_name << std::endl;
 }
 
 DiamondTrap::DiamondTrap( DiamondTrap const &origin ) : ClapTrap(), ScavTrap(), FragTrap(){
 	this->_name = origin._name;
-	ClapTrap::operator=(origin);
 	std::cout << "DiamondTrap : Copy Constructor called : " << this->_name << std::endl;
+	ClapTrap::operator=(origin);
 }
 
 DiamondTrap::~DiamondTrap( void ){
