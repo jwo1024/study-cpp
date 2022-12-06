@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:46:48 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 21:44:26 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/06 17:21:22 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	ClapTrap( void );
 	ClapTrap( std::string name );
 	ClapTrap( ClapTrap const &origin );
-	~ClapTrap( void );
+	virtual ~ClapTrap( void );
 
 	ClapTrap	&operator=( ClapTrap const &origin );
 

@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:46:46 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/03 14:35:04 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/06 17:12:50 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ ClapTrap::ClapTrap( std::string name )
 }
 
 ClapTrap::ClapTrap( ClapTrap const &origin ){
-	operator=(origin);
 	std::cout << "ClapTrap : Copy Constructor called : " << this->_name << std::endl;
+	operator=(origin);
 }
 
 ClapTrap::~ClapTrap( void ){
@@ -60,7 +60,7 @@ int	ClapTrap::getAttackDamage( void ) const{
 void	ClapTrap::attack( const std::string& target ){
 	if (this->_hit_points == 0 || this->_energy_points == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " can't do anything.." << std::endl;
+		std::cout << "ClapTrap " << this->_name << "is dead can't do anything.." << std::endl;
 		return ;
 	}
 	this->_energy_points--;
@@ -71,7 +71,7 @@ void	ClapTrap::attack( const std::string& target ){
 void	ClapTrap::takeDamage( unsigned int amount ){
 	if (this->_hit_points == 0 || this->_energy_points == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " can't do anything.." << std::endl;
+		std::cout << "ClapTrap " << this->_name << "is dead can't do anything.." << std::endl;
 		return ;
 	}
 	this->_hit_points -= amount;
@@ -82,7 +82,7 @@ void	ClapTrap::takeDamage( unsigned int amount ){
 void	ClapTrap::beRepaired( unsigned int amount ){
 	if (this->_hit_points == 0 || this->_energy_points == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " can't do anything..." << std::endl;
+		std::cout << "ClapTrap " << this->_name << "is dead can't do anything..." << std::endl;
 		return ;
 	}
 	this->_hit_points += amount;
