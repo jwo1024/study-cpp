@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 13:56:41 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 03:46:30 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog( void ){
 	std::cout << "Dog : default constructor called" << std::endl;
 }
 
-Dog::Dog( const Dog &origin ){
+Dog::Dog( const Dog &origin ) : Animal() {
 	Dog::operator=(origin);
 	std::cout << "Dog : copy constructor called" << std::endl;
 }

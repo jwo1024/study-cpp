@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:37:52 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 00:14:03 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 03:44:55 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 
 void	ShrubberyCreationForm::execute( Bureaucrat const &executor ) const{
 	std::ofstream	write_file;
+	std::string		file_name = this->_target;
 
 	if (this->getSigned() == false)
 		throw AForm::UnsignedFormException();
 	if (executor.getGrade() > this->getGradeE())
 		throw AForm::GradeTooLowException();
-	write_file.open(this->_target + "_shrubbery");
+	file_name += + "_shrubbery";
+	write_file.open(this->_target.c_str());
 	if (write_file.fail())
 		throw "failed to open write_file";
 	write_file << "               ,@@@@@@@," << std::endl;

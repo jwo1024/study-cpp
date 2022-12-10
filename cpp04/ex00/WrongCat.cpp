@@ -23,7 +23,7 @@ WrongCat::WrongCat( std::string type ){
 	std::cout << "WrongCat : param constructor called" << std::endl;
 }
 
-WrongCat::WrongCat( const WrongCat &origin ){
+WrongCat::WrongCat( const WrongCat &origin ) : WrongAnimal(){
 	WrongCat::operator=(origin);
 	std::cout << "WrongCat : copy constructor called" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 13:56:21 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 03:24:20 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat( void ){
 	std::cout << "Cat : default constructor called" << std::endl;
 }
 
-Cat::Cat( const Cat &origin ){
+Cat::Cat( const Cat &origin ) : Animal() {
 	Cat::operator=(origin);
 	std::cout << "Cat : copy constructor called" << std::endl;
 }
