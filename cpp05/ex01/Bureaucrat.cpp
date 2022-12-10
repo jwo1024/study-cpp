@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 23:23:14 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/10 02:44:19 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 00:43:09 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,16 @@ const char *Bureaucrat::GradeTooLowException::what( void ) const throw(){
 }
 
 void	Bureaucrat::signForm( Form &f ) const{
-	try
-	{
+	try{
 		f.beSigned(*this);
 		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	}
-	catch (Form::GradeTooLowException &e)
-	{
+	catch (Form::GradeTooLowException &e){
 		std::cout << this->_name << " couldn't signed " << f.getName() \
 					<< " because " << e.what() << std::endl;
+	}
+	catch (...){
+		std::cout << "exception" << std::endl;
 	}
 }
 

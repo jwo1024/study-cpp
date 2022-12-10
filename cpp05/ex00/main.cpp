@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 23:39:40 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/09 00:18:39 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 00:41:26 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main( void ){
 	{
 		Bureaucrat	a("jiwoo", 150);
 		Bureaucrat	b("minsuuu", 1);
-		Bureaucrat	c("Bruno Mars", 3); // 3->0 exception
+		Bureaucrat	c("Bruno Mars", 3);
 
-		for (int i = 0; i < 149; i++) // 149->150 exception
+		for (int i = 0; i < 149; i++)
 			a.incrementGrade();
-		for (int i = 0; i < 149; i++) // 149->150 exception
+		for (int i = 0; i < 149; i++)
 			b.decrementGrade();
 
 		std::cout << a << std::endl;
@@ -31,14 +31,15 @@ int	main( void ){
 		std::cout << c << std::endl;
 
 	}
-	catch (Bureaucrat::GradeTooLowException	&e)
-	{
+	catch (Bureaucrat::GradeTooLowException	&e){
 		std::cout << e.what() << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
+	catch (Bureaucrat::GradeTooHighException &e){
 		std::cout << e.what() << std::endl;
 	}
-	
+	catch (...){
+		std::cout << "exception" << std::endl;
+	}
+
 	return 0;
 }

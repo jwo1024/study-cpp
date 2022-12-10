@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 23:39:40 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/10 11:55:49 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 00:44:41 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,22 @@ int	main( void ){
 		RobotomyRequestForm		form2("Robo");
 		PresidentialPardonForm	form3("Pardon");
 
+		a.executeForm(form1);
 		a.signForm(form1);
 		a.executeForm(form1);
 		b.executeForm(form1);
+		std::cout << std::endl;
 
 		a.signForm(form2);
 		b.signForm(form2);
 		b.executeForm(form2);
+		std::cout << std::endl;
 	
 		a.signForm(form3);
 		b.signForm(form3);
 		c.signForm(form3);
 		c.executeForm(form3);
+		std::cout << std::endl;
 
 		std::cout << form1 << std::endl;
 		std::cout << form2 << std::endl;
@@ -55,6 +59,9 @@ int	main( void ){
 	}
 	catch (AForm::GradeTooHighException &e){
 		std::cout << e.what() << std::endl;
+	}
+	catch (...){
+		std::cout << "exception" << std::endl;
 	}
 
 	return 0;
