@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 18:01:07 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 03:50:38 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog( void ){
 	this->brain = new Brain();
 }
 
-Dog::Dog( Dog const &origin ){
+Dog::Dog( Dog const &origin ) : Animal(){
 	std::cout << "Dog : copy constructor called" << std::endl;
 	Dog::operator=(origin);
 }
