@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 03:50:31 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 16:33:41 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 Cat::Cat( void ){
 	std::cout << "Cat : default constructor called" << std::endl;
-	this->type = "Cat";
 	this->brain = new Brain();
+	this->type = "Cat";
 }
 
 Cat::Cat( Cat const &origin ) : Animal(){
 	std::cout << "Cat : copy constructor called" << std::endl;
+	this->brain = new Brain();
 	Cat::operator=(origin);
 }
 

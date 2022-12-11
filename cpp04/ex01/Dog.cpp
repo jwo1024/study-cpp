@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 03:50:38 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 18:08:33 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ Dog::Dog( void ){
 
 Dog::Dog( Dog const &origin ) : Animal(){
 	std::cout << "Dog : copy constructor called" << std::endl;
+	this->brain = new Brain();
 	Dog::operator=(origin);
+
 }
 
 Dog::~Dog( void ){
@@ -39,6 +41,14 @@ void	Dog::makeSound( void ) const{
 	std::cout << "Dog : Woof! woof!!" << std::endl;
 }
 
-Brain	*Dog::getBrain( void ) const{
+Brain const	*Dog::getBrain( void ) const{
 	return this->brain;
+}
+
+std::string const	Dog::getIdea( int const idx ) const{
+	return this->brain->getIdea(idx);
+}
+
+void	Dog::setIdea( int const idx, std::string const idea ) const{
+	this->brain->setIdea(idx, idea);
 }

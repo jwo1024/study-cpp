@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:38:21 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 17:14:55 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 18:07:06 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ Brain::~Brain( void ){
 }
 
 Brain	&Brain::operator=( const Brain &origin ){
-	if (this != & origin)
-	{
-		for (int i = 0; i < 100 ; i ++)
-			this->ideas[i] = origin.ideas[i];
-	}
+	for (int i = 0; i < 100 ; i ++)
+		this->ideas[i] = origin.ideas[i];
 	return *this;
 }
 
@@ -40,6 +37,9 @@ void	Brain::setIdea( const int &idx, std::string idea ){
 		this->ideas[idx] = idea;
 }
 
-std::string	Brain::getIdea( const int &idx ) const{
-	return this->ideas[idx];
+std::string const	Brain::getIdea( const int &idx ) const{
+	if (0 <= idx && idx < 100)
+		return this->ideas[idx];
+	else
+		return "false";
 }

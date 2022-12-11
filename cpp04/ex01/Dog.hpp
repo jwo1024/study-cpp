@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 17:06:57 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 16:54:08 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ public:
 
 	Dog	&operator=( Dog const &origin );
 
-	void	makeSound( void ) const;
-	Brain	*getBrain( void ) const;
+	void				makeSound( void ) const;
+	Brain const			*getBrain( void ) const;
+	std::string const	getIdea( int const idx ) const; //?
+	void				setIdea( int const idx, std::string const idea ) const; //?
 };
 
 #endif
