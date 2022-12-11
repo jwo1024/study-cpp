@@ -20,7 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( void )
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
 	: AForm("shrubbery creation", 145, 137), _target(target){}
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &origin ){
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &origin ) : AForm() {
 	ShrubberyCreationForm::operator=(origin);
 }
 
