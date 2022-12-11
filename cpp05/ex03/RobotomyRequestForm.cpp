@@ -21,13 +21,13 @@ RobotomyRequestForm::RobotomyRequestForm( void )
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
 	: AForm("robotomy request", 72, 45), _target(target){}
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &origin ){
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &origin ) : AForm(){
 	RobotomyRequestForm::operator=(origin);
 }
 
 RobotomyRequestForm::~RobotomyRequestForm( void ){}
 
-RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &origin ) : AForm(){
+RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &origin ){
 	AForm::operator=(origin);
 	this->_target = origin._target;
 	return *this;

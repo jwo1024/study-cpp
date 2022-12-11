@@ -20,13 +20,13 @@ PresidentialPardonForm::PresidentialPardonForm( void )
 PresidentialPardonForm::PresidentialPardonForm( std::string target )
 	: AForm("presidential pardon", 25, 5), _target(target){}
 
-PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &origin ){
+PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &origin ) : AForm(){
 	PresidentialPardonForm::operator=(origin);
 }
 
 PresidentialPardonForm::~PresidentialPardonForm( void ){}
 
-PresidentialPardonForm	&PresidentialPardonForm::operator=( PresidentialPardonForm const &origin ) : AForm(){
+PresidentialPardonForm	&PresidentialPardonForm::operator=( PresidentialPardonForm const &origin ){
 	AForm::operator=(origin);
 	this->_target = origin._target;
 	return *this;
