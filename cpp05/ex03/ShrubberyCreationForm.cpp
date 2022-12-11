@@ -26,7 +26,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &origi
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void ){}
 
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=( ShrubberyCreationForm const &origin ){
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=( ShrubberyCreationForm const &origin ) : AForm(){
 	AForm::operator=(origin);
 	this->_target = origin._target;
 	return *this;

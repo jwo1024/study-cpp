@@ -26,7 +26,7 @@ PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &or
 
 PresidentialPardonForm::~PresidentialPardonForm( void ){}
 
-PresidentialPardonForm	&PresidentialPardonForm::operator=( PresidentialPardonForm const &origin ){
+PresidentialPardonForm	&PresidentialPardonForm::operator=( PresidentialPardonForm const &origin ) : AForm(){
 	AForm::operator=(origin);
 	this->_target = origin._target;
 	return *this;

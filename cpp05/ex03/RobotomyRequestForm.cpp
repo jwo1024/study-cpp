@@ -27,7 +27,7 @@ RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &origin ){
 
 RobotomyRequestForm::~RobotomyRequestForm( void ){}
 
-RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &origin ){
+RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &origin ) : AForm(){
 	AForm::operator=(origin);
 	this->_target = origin._target;
 	return *this;
