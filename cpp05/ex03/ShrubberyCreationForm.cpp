@@ -41,7 +41,7 @@ void	ShrubberyCreationForm::execute( Bureaucrat const &executor ) const{
 	if (executor.getGrade() > this->getGradeE())
 		throw AForm::GradeTooLowException();
 	file_name += "_shrubbery";
-	write_file.open(this->_target.c_str());
+	write_file.open(file_name.c_str());
 	if (write_file.fail())
 		throw "failed to open write_file";
 	write_file << "               ,@@@@@@@," << std::endl;

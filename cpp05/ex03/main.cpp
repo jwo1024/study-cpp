@@ -31,7 +31,7 @@ int	main( void ){
 		b.executeForm(*form);
 		delete	form;
 
-		form = intern.makeForm("presidential pardon..", "target");
+		form = intern.makeForm("presidential ", "target");
 
 		std::cout << "end try" << std::endl;
 		delete form;
