@@ -15,10 +15,6 @@
 
 #include	<iostream>
 
-void	check_leaks( void ){
-	system("leaks a.out");
-}
-
 int	main( void ){
 	{
 		const Animal	*j = new Dog();
@@ -68,6 +64,5 @@ int	main( void ){
 		delete cat2;
 		delete cat3;
 	}
-//	atexit(check_leaks);
 	return 0;
 }
