@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 16:54:08 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 18:18:42 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ public:
 
 	void				makeSound( void ) const;
 	Brain const			*getBrain( void ) const;
-	std::string const	getIdea( int const idx ) const; //?
-	void				setIdea( int const idx, std::string const idea ) const; //?
+	std::string const	getIdea( int const idx ) const;
+	void				setIdea( int const idx, std::string const idea );
 };
 
 #endif

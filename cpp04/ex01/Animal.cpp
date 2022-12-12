@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:21:37 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 13:56:00 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/12 10:19:55 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ Animal::~Animal( void ){
 	std::cout << "Animal : destructor called" << std::endl;
 }
 
-Animal	&Animal::operator=( const Animal &origin ){
-	this->type = origin.getType();
+Animal	&Animal::operator=( Animal const &origin ){
+	if (this->type == origin.type)
+		this->type = origin.type;
+	else
+		std::cout << "operator= : not same type" <<std::endl;
 	return *this;
 }
 

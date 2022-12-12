@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 01:12:53 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 03:10:50 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/12 10:43:10 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main( int argc, char *argv[] ){
 	float	f = 0;
 	double	d = 0;
 
+	
+
 	try{
+
 		c = static_cast<char>(std::stoi(argv[1]));
 		if (c == 0)
 			throw "Non displayable";
@@ -56,11 +59,17 @@ int	main( int argc, char *argv[] ){
 		std::cout << "int: impossible" << std::endl;
 	}
 	
+	char	*endl;
 
+	d = strtod(argv[1], &endl);
+	printf("endl %c\n", *endl);
+	f = static_cast<float>(d);
+	i = static_cast<int>(d);
+//	f = static_cast<float>(d);
 
 
 //	std::cout << "char: " << c <<  std::endl;
-//	std::cout << "int: " << i << std::endl;
+	std::cout << "int: " << i << std::endl;
 	std::cout << "float: " << f << std::endl;
 	std::cout << "double: " << d << std::endl;
 

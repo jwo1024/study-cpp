@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:34:50 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 18:06:46 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/12 10:30:16 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Brain{
 private:
-//protected:
 	std::string	ideas[100];
 public:
 	Brain( void );

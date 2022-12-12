@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:50:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 18:08:33 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/11 18:27:07 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ Dog::Dog( Dog const &origin ) : Animal(){
 
 Dog::~Dog( void ){
 	std::cout << "Dog : destructor called" << std::endl;
-	delete	this->brain;
+	if (this->brain)
+		delete	this->brain;
 }
 
 Dog	&Dog::operator=( Dog const &origin){
@@ -49,6 +50,6 @@ std::string const	Dog::getIdea( int const idx ) const{
 	return this->brain->getIdea(idx);
 }
 
-void	Dog::setIdea( int const idx, std::string const idea ) const{
+void	Dog::setIdea( int const idx, std::string const idea ){
 	this->brain->setIdea(idx, idea);
 }
