@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 18:18:42 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 14:34:50 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/04 17:02:57 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include	"AAnimal.hpp"
-#include	"Brain.hpp"
+# include	<string>
 
-class Dog : public AAnimal{
-private:
-	Brain	*brain;
+class Brain{
+protected:
+	std::string	ideas[100];
 public:
-	Dog( void );
-	Dog( Dog const &origin );
-	~Dog( void );
+	Brain( void );
+	Brain( const Brain &origin );
+	virtual ~Brain( void );
 
-	Dog	&operator=( Dog const &origin );
+	Brain	&operator=( const Brain &origin );
 
-	void				makeSound( void ) const;
-	Brain const			*getBrain( void ) const;
-	std::string const	getIdea( int const idx ) const;
-	void				setIdea( int const idx, std::string const idea );
+	void		setIdea( const int &idx, std::string idea );
+	std::string	getIdea( const int &idx ) const;
+
 };
 
 #endif

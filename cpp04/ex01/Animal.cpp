@@ -27,10 +27,7 @@ Animal::~Animal( void ){
 }
 
 Animal	&Animal::operator=( Animal const &origin ){
-	if (this->type == origin.type)
-		this->type = origin.type;
-	else
-		std::cout << "operator= : not same type" <<std::endl;
+	this->type = origin.type;
 	return *this;
 }
 

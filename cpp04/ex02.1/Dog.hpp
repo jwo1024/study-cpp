@@ -6,17 +6,17 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 18:18:42 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 17:06:57 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
 
-#include	"AAnimal.hpp"
+#include	"Animal.hpp"
 #include	"Brain.hpp"
 
-class Dog : public AAnimal{
+class Dog : public Animal{
 private:
 	Brain	*brain;
 public:
@@ -26,10 +26,8 @@ public:
 
 	Dog	&operator=( Dog const &origin );
 
-	void				makeSound( void ) const;
-	Brain const			*getBrain( void ) const;
-	std::string const	getIdea( int const idx ) const;
-	void				setIdea( int const idx, std::string const idea );
+	void	makeSound( void ) const;
+	Brain	*getBrain( void ) const;
 };
 
 #endif

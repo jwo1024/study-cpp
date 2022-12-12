@@ -26,8 +26,8 @@ Animal::~Animal( void ){
 	std::cout << "Animal : destructor called" << std::endl;
 }
 
-Animal	&Animal::operator=( const Animal &origin ){
-	this->type = origin.getType();
+Animal	&Animal::operator=( Animal const &origin ){
+	this->type = origin.type;
 	return *this;
 }
 

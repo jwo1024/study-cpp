@@ -22,7 +22,6 @@ Cat::Cat( void ){
 Cat::Cat( Cat const &origin ) : Animal(){
 	std::cout << "Cat : copy constructor called" << std::endl;
 	this->brain = new Brain();
-	this->type = "Cat"; // 이걸 추가한 이유?
 	Cat::operator=(origin);
 }
 
@@ -33,11 +32,7 @@ Cat::~Cat( void ){
 }
 
 Cat	&Cat::operator=( Cat const &origin){
-	if (this->type != origin.type)
-		std::cout << "!is not same type!" << this->type << origin.getType() << std::endl;
-	std::cout << "!is not same type!" << std::endl;
-
-	this->type = origin.getType();
+	this->type = origin.type;
 	*(this->brain) = *(origin.brain);
 	return *this;
 }

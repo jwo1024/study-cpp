@@ -33,7 +33,7 @@ Dog::~Dog( void ){
 }
 
 Dog	&Dog::operator=( Dog const &origin){
-	this->type = origin.getType();
+	this->type = origin.type;
 	*(this->brain) = *(origin.brain);
 	return *this;
 }

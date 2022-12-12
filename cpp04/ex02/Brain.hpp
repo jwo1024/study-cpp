@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:34:50 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/04 17:02:57 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/12 10:30:16 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 # include	<string>
 
 class Brain{
-protected:
+private:
 	std::string	ideas[100];
 public:
 	Brain( void );
 	Brain( const Brain &origin );
-	virtual ~Brain( void );
+	~Brain( void );
 
 	Brain	&operator=( const Brain &origin );
 
 	void		setIdea( const int &idx, std::string idea );
-	std::string	getIdea( const int &idx ) const;
-
+	std::string const	getIdea( const int &idx ) const;
 };
 
 #endif

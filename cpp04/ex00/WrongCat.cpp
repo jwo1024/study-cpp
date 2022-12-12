@@ -33,7 +33,7 @@ WrongCat::~WrongCat( void ){
 }
 
 WrongCat	&WrongCat::operator=( const WrongCat &origin){
-	this->type = origin.getType();
+	this->type = origin.type;
 	return *this;
 }
 

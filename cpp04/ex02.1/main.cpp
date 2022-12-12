@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:56:04 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/12 10:22:45 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 21:43:46 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include	"Dog.hpp"
 
 #include	<iostream>
-
-void	check_leaks( void ){
-	system("leaks a.out");
-}
 
 int	main( void ){
 	{
@@ -29,45 +25,37 @@ int	main( void ){
 	}
 	std::cout << std::endl;
 	{
-		Animal	*animals[10];
-
-		for (int i = 0; i < 5; i++)
-			animals[i] = new Cat;
-		for (int i = 5; i < 10; i++)
-			animals[i] = new Dog;
+		Dog	*dog = new Dog();
+		Brain	*brain = dog->getBrain();
+		Dog	*dog2 = new Dog();
+		Brain	*brain2 = dog2->getBrain();
 
 		std::cout << std::endl;
-		for (int i = 0; i < 10; i++)
-			delete animals[i];
+		brain->setIdea(0, "first_idea");
+		brain->setIdea(1, "second_idea");
+		brain->setIdea(2, "third_idea");
+		*dog2 = *dog;
+		brain2->setIdea(0, "set_idea");
+
+
+		std::cout << std::endl;
+		std::cout << brain->getIdea(0) << std::endl;
+		std::cout << brain->getIdea(1) << std::endl;
+		std::cout << brain->getIdea(2) << std::endl;
+		std::cout << brain2->getIdea(0) << std::endl;
+		std::cout << brain2->getIdea(1) << std::endl;
+		std::cout << brain2->getIdea(2) << std::endl;
+
+		std::cout << (dog->getBrain()) << " " << (dog2->getBrain()) << std::endl;
+		std::cout << std::endl;
+		delete dog;
+		delete dog2;
 	}
-	std::cout << std::endl;
-	{
-		Cat	*cat1 = new Cat;
-		Cat	*cat2 = new Cat(*cat1);
-		Cat	*cat3 = new Cat;
+	//system("leaks a.out");
 
-		cat1->setIdea(0, "fish");
-		cat1->setIdea(1, "catnip");
-		cat1->setIdea(2, "nap");
-		*cat3 = *cat2 = *cat1;
-		std::cout << "type" << cat1->getType() << std::endl;
+	/* Creating Animal Objects = Impossible */
+//	Animal	a;
+//	Animal	*b = new Animal();
 
-		std::cout << cat1->getIdea(0) << std::endl;
-		std::cout << cat1->getIdea(1) << std::endl;
-		std::cout << cat1->getIdea(2) << std::endl;
-		std::cout << std::endl;
-		std::cout << cat2->getIdea(0) << std::endl;
-		std::cout << cat2->getIdea(1) << std::endl;
-		std::cout << cat2->getIdea(2) << std::endl;
-		std::cout << std::endl;
-		std::cout << cat3->getIdea(0) << std::endl;
-		std::cout << cat3->getIdea(1) << std::endl;
-		std::cout << cat3->getIdea(2) << std::endl;
-	
-		delete cat1;
-		delete cat2;
-		delete cat3;
-	}
-//	atexit(check_leaks);
 	return 0;
 }

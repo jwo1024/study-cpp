@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 23:47:01 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/11 18:18:42 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/03 23:15:16 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/12 10:33:06 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
-#include	"AAnimal.hpp"
-#include	"Brain.hpp"
+#include	<string>
 
-class Dog : public AAnimal{
-private:
-	Brain	*brain;
+class AAnimal{
+protected:
+	std::string type;
 public:
-	Dog( void );
-	Dog( Dog const &origin );
-	~Dog( void );
+	AAnimal( void );
+	AAnimal( const AAnimal &origin );
+	virtual ~AAnimal( void );
 
-	Dog	&operator=( Dog const &origin );
+	AAnimal	&operator=( const AAnimal &origin );
 
-	void				makeSound( void ) const;
-	Brain const			*getBrain( void ) const;
-	std::string const	getIdea( int const idx ) const;
-	void				setIdea( int const idx, std::string const idea );
+	std::string		getType( void ) const;
+	virtual void	makeSound( void ) const = 0;
 };
 
 #endif
