@@ -16,11 +16,14 @@
 class Convertor{
 private:
 	double	value;
-	bool	int_impossible;
 	bool	char_impossible;
 	bool	char_non_displayable;
+	bool	int_impossible;
 	bool	float_impossible;
 	bool	double_impossible;
+	
+	bool	not_a_number;
+
 public:
 	Convertor( void );
 	Convertor( Convertor const &origin );

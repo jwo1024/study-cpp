@@ -32,7 +32,7 @@ Bureaucrat::Bureaucrat( Bureaucrat const &origin ) : _name(origin.getName()){
 Bureaucrat::~Bureaucrat( void ){}
 
 Bureaucrat	&Bureaucrat::operator=( Bureaucrat const &origin ){
-	this->_grade = origin.getGrade();
+	this->_grade = origin._grade;
 	return *this;
 }
 
@@ -71,7 +71,7 @@ void	Bureaucrat::signForm( Form &f ) const{
 		f.beSigned(*this);
 		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	}
-	catch (Form::GradeTooLowException &e){
+	catch (std::exception &e){
 		std::cout << this->_name << " couldn't signed " << f.getName() \
 					<< " because " << e.what() << std::endl;
 	}
@@ -81,6 +81,6 @@ void	Bureaucrat::signForm( Form &f ) const{
 }
 
 std::ostream	&operator<<( std::ostream &os, Bureaucrat const &b ){
-	os << b.getName() << " : bureaucrat-grade " << b.getGrade() <<".";
+	os << b.getName() << ", bureaucrat grade " << b.getGrade() <<".";
 	return os;
 }

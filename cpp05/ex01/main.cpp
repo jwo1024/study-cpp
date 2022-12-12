@@ -32,16 +32,7 @@ int	main( void ){
 		std::cout << a << std::endl;
 		std::cout << form1 << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException	&e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Form::GradeTooLowException &e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Form::GradeTooHighException &e){
+	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
 	catch (...){

@@ -31,10 +31,7 @@ int	main( void ){
 		std::cout << c << std::endl;
 
 	}
-	catch (Bureaucrat::GradeTooLowException	&e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e){
+	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
 	catch (...){

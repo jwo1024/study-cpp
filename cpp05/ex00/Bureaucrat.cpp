@@ -30,7 +30,7 @@ Bureaucrat::Bureaucrat( Bureaucrat const &origin ) : _name(origin.getName()){
 Bureaucrat::~Bureaucrat( void ){}
 
 Bureaucrat	&Bureaucrat::operator=( Bureaucrat const &origin ){
-	this->_grade = origin.getGrade();
+	this->_grade = origin._grade;
 	return *this;
 }
 
@@ -65,6 +65,6 @@ const char *Bureaucrat::GradeTooLowException::what( void ) const throw(){
 }
 
 std::ostream	&operator<<( std::ostream &os, Bureaucrat const &b ){
-	os << b.getName() << " : bureaucrat-grade " << b.getGrade() <<".";
+	os << b.getName() << ", bureaucrat grade " << b.getGrade() <<".";
 	return os;
 }

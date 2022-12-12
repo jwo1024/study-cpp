@@ -63,11 +63,11 @@ int	Form::getGradeE( void ) const{
 }
 
 const char *Form::GradeTooHighException::what( void ) const throw(){
-	return	"Form : Grade Too High";
+	return	"Grade Too High";
 }
 
 const char *Form::GradeTooLowException::what( void ) const throw(){
-		return	"Form : Grade Too Low";
+		return	"Grade Too Low";
 }
 
 

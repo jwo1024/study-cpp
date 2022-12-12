@@ -31,18 +31,11 @@ int	main( void ){
 		b.executeForm(*form);
 		delete	form;
 
-		form = intern.makeForm("presidential ", "target");
+		form = intern.makeForm("hello world ", "target");
 
-		std::cout << "end try" << std::endl;
 		delete form;
 	}
-	catch (Bureaucrat::GradeTooLowException	&e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e){
-		std::cout << e.what() << std::endl;
-	}
-	catch (Intern::MismatchedTypeException &e){
+	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
 	catch (...){
