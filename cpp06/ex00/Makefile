@@ -6,7 +6,7 @@
 #    By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 15:54:12 by jiwolee           #+#    #+#              #
-#    Updated: 2022/12/11 01:13:30 by jiwolee          ###   ########seoul.kr   #
+#    Updated: 2022/12/13 12:18:08 by jiwolee          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME	= convert
 CXX		= c++
 CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRC		= ./main.cpp
+SRC		= ./main.cpp\
+		  ./Convertor.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 

@@ -6,23 +6,43 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:22:33 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/12 11:47:43 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/13 14:37:05 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONVERTOR_HPP
 # define CONVERTOR_HPP
 
+#include	<string>
+
 class Convertor{
 private:
-	double	value;
-	bool	char_impossible;
-	bool	char_non_displayable;
-	bool	int_impossible;
-	bool	float_impossible;
-	bool	double_impossible;
-	
-	bool	not_a_number;
+	char	char_v;
+	int		int_v;
+	float	float_v;
+	double	double_v;
+
+	bool	is_char;
+	bool	is_int;
+	bool	is_float;
+	bool	is_double;
+	bool	is_string;
+
+	bool	impossible_all; // == is string
+	bool	int_overflow;
+	bool	char_overflow;
+
+	void	detect_number( std::string &str );
+	bool	detect_char( std::string &str );
+	void	setCharValue( std::string &str );
+	void	setIntValue( std::string &str );
+	void	setFloatValue( std::string &str );
+	void	setDoubleValue( std::string &str );
+
+	void	printCharValue( void ) const;
+	void	printIntValue( void ) const;
+	void	printFloatValue( void ) const;
+	void	printDoubleValue( void ) const;
 
 public:
 	Convertor( void );
@@ -33,10 +53,7 @@ public:
 	Convertor	&operator=( Convertor const &origin );
 
 	void	setValue( char const *str );
-	void	printCharValue( void ) const;
-	void	printIntValue( void ) const;
-	void	printFloatValue( void ) const;
-	void	printDoubleValue( void ) const;
+	void	printValue( void ) const;
 };
 
 #endif
