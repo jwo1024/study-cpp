@@ -12,6 +12,7 @@
 
 #include	<string>
 #include	<iostream>
+#include	<cstdint>
 
 struct Data{
 	std::string	data;
