@@ -26,7 +26,6 @@ private:
 	bool	is_int;
 	bool	is_float;
 	bool	is_double;
-
 	bool	impossible_all;
 	bool	int_overflow;
 	bool	char_overflow;

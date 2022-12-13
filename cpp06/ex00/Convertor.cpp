@@ -95,7 +95,9 @@ void	Convertor::detect_number( std::string &str ){
 		this->is_int = true;
 	else
 	{
-		if (str[pos] == '.')
+		if (str[pos] == 'f')
+			this->is_float = true;
+		else if (str[pos] == '.')
 		{
 			pos = str.find_first_not_of("012345689", pos + 1);
 			if (pos == std::string::npos)
@@ -116,7 +118,6 @@ void	Convertor::detect_number( std::string &str ){
 		}
 	}
 }
-
 
 
 /* --- SET VALUES --- */
@@ -221,7 +222,7 @@ void	Convertor::printValue( void ) const{
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
 	}
-	else if (std::isnan(this->double_v)) // ? 적용이 안됨..  // float 는 ? 
+	else if (std::isnan(this->double_v)) 
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;

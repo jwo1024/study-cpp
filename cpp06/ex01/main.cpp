@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include	<string>
+#include	<iostream>
 
 struct Data{
-	std::string	str;
+	std::string	data;
 };
 
 uintptr_t	serialize(Data* ptr){
@@ -26,6 +27,18 @@ Data*	deserialize(uintptr_t raw){
 
 int	main( void ){
 	
+	struct Data d;
+	uintptr_t ptr;
+	struct Data *d_ptr;
+
+	d.data = "hello";
+	
+	ptr = serialize(&d);
+	d_ptr = deserialize(ptr);
+
+	std::cout << d_ptr->data << std::endl;
+	std::cout << "d : " << &d << std::endl;
+	std::cout << "d_ptr : " << d_ptr << std::endl;
+
 	return 0;
 }
-
