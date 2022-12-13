@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:22:33 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/13 14:37:05 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/13 14:52:20 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ private:
 	bool	is_int;
 	bool	is_float;
 	bool	is_double;
-	bool	is_string;
 
-	bool	impossible_all; // == is string
+	bool	impossible_all;
 	bool	int_overflow;
 	bool	char_overflow;
 

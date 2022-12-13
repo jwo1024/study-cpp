@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 01:12:53 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/13 14:51:31 by jiwolee          ###   ########seoul.kr  */
+/*   Created: 2022/12/13 15:53:30 by jiwolee           #+#    #+#             */
+/*   Updated: 2022/12/13 15:55:45 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"Convertor.hpp"
-#include	<iostream>
-#include	<string>
+#ifndef	A_HPP
+# define A_HPP
 
-int	main( int argc, char *argv[] ){
-	if (argc != 2)
-	{
-		std::cout << "wrong argc" << std::endl;
-		return 0;
-	}
-	Convertor	con;
-	con.setValue(argv[1]);
-	con.printValue();
-	return 0;
-}
+#include	"Base.hpp"
+
+class A : public Base{
+public:
+	A( void );
+	~A( void );
+};
+
+#endif

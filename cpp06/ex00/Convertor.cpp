@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:27:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/13 14:38:53 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/13 14:49:02 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include	<iostream>
 #include	<string>
 #include	<limits>
-
 #include	<cmath>
 
 Convertor::Convertor( void ){
@@ -27,7 +26,6 @@ Convertor::Convertor( void ){
 	this->is_int = false;
 	this->is_float = false;
 	this->is_double = false;
-	this->is_string = false;
 
 	this->impossible_all = false;
 	this->int_overflow = false;
@@ -47,7 +45,6 @@ Convertor::Convertor( char const *str ){
 	this->is_int = false;
 	this->is_float = false;
 	this->is_double = false;
-	this->is_string = false;
 
 	this->impossible_all = false;
 	this->int_overflow = false;
@@ -66,7 +63,6 @@ Convertor	&Convertor::operator=( Convertor const &origin ){
 	this->is_int = origin.is_int;
 	this->is_float = origin.is_float;
 	this->is_double = origin.is_double;
-	this->is_string = origin.is_string;
 
 	this->impossible_all = origin.impossible_all;
 	this->int_overflow = origin.int_overflow;
@@ -107,10 +103,7 @@ void	Convertor::detect_number( std::string &str ){
 			else if (str[pos] == 'f' && str[pos + 1] == '\0')
 				this->is_float = true;
 			else
-			{
 				this->impossible_all = true;
-				this->is_string = true;
-			}
 		}
 		else
 		{
@@ -119,10 +112,7 @@ void	Convertor::detect_number( std::string &str ){
 			else if (str == "inff" || str == "-inff" || str == "+inff" || str == "nanf")
 				this->is_float = true;
 			else
-			{
 				this->impossible_all = true;
-				this->is_string = true;
-			}
 		}
 	}
 }
@@ -139,13 +129,14 @@ void	Convertor::setValue( char const *str ){
 	}
 
 	std::string	s = str;
-	bool	*is_types[5] = {&this->is_char, &this->is_int, &this->is_float, &this->is_double, &this->is_string};
+	std::string	types[5] = {"char", "int", "float", "double"}; 
+	bool	*is_types[4] = {&this->is_char, &this->is_int, &this->is_float, &this->is_double};
 	void	(Convertor::*set_funcs[4])(std::string &str) = {&Convertor::setCharValue, \
 			&Convertor::setIntValue, &Convertor::setFloatValue, &Convertor::setDoubleValue};
 
 	if (detect_char(s) == false)
 		detect_number(s);
-	if (*is_types[4] == true)
+	if (this->impossible_all == true)
 		std::cout << "type : string" << std::endl;
 	else
 	{
@@ -153,7 +144,7 @@ void	Convertor::setValue( char const *str ){
 		{
 			if (*is_types[i] == true)
 			{
-				std::cout << "type : " << i << std::endl;
+				std::cout << "type : " << types[i] << std::endl;
 				(this->*set_funcs[i])(s);
 			}
 		}
@@ -239,6 +230,8 @@ void	Convertor::printValue( void ) const{
 	}
 	else
 	{
+		std::cout << std::fixed;
+		std::cout.precision(1);
 		this->printCharValue();
 		this->printIntValue();
 		this->printFloatValue();
@@ -263,8 +256,6 @@ void	Convertor::printIntValue( void ) const{
 }
 
 void	Convertor::printFloatValue( void ) const{
-	std::cout << std::fixed;
-	std::cout.precision(1);
 	std::cout << "float: " << this->float_v << "f" << std::endl;
 }
 
