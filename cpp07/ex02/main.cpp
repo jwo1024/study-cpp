@@ -34,7 +34,7 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
 	//	std::cout << mirror[i] << " " <<  numbers[i] << std::endl;
-        if (mirror[i] != numbers[i])
+        if (mirror[i] != test[i])
         {
             std::cerr << "didn't save the same value!!" << std::endl;
             return 1;

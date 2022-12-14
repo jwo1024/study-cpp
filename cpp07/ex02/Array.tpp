@@ -27,6 +27,7 @@ Array<T>::Array( unsigned int n ){
 template <typename T>
 Array<T>::Array( Array const &origin ){
 	this->_array = new T[origin._size];
+	*this = origin;
 }
 
 template <typename T>
