@@ -15,17 +15,13 @@
 
 # include <iostream>
 
-
-
-
-/*
 template <typename T>
-void	print(T const &data){
+void	my_print(T const &data){
 	std::cout << "print " << data << std::endl;
-}*/
+}
 
 template <typename T>
-void	func(T const &data){
+void	func(T &data){
 	std::cout << "func " << data << std::endl;
 }
 
@@ -34,20 +30,18 @@ void	sqrt(T &data){
 	data = data * data;
 }
 
+
+
 template <typename T>
 void	iter(T const *arr, size_t const len, void (*func)(T const &)){
-	std::cout << "const" << std::endl;
 	for (size_t i = 0; i < len; i++)
 		func(arr[i]);
 }
 
-
-template <typename T> // T const *arr ? 
+template <typename T>
 void	iter(T *arr, size_t len, void (*func)(T &)){
-	std::cout << " not const" << std::endl;
 	for (size_t i = 0; i < len; i++)
 		func(arr[i]);
 }
-
 
 #endif

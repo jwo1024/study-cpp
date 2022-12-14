@@ -13,23 +13,34 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-#include	<iostream>
+#include	<exception>
 
 template <typename T>
 class Array{
 private:
-	T[] _array;
+	T	*_array;
+	unsigned int	_size;
 public:
 	Array( void );
-	Array( size_t n );
+	Array( unsigned int n ); // initialized by default. ?
 	Array( Array const &origin );
 	~Array( void );
 
-	Array &operator=( Array const &origin );
+	Array	&operator=( Array const &origin );
+	T		&operator[]( unsigned int idx );
+	T const	&operator[]( unsigned int idx ) const;
 
-	
-	
+	unsigned int	size( void ) const;
+	void			resetArray( unsigned int const len );
+
+	class	WrongArangeException : public std::exception{
+		const char* what() const throw();
+	};
+	class	EmptyArrayException : public std::exception{
+		const char* what() const throw();
+	};
 };
 
+# include "Array.tpp"
 
 #endif
