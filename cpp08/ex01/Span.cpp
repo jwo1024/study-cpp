@@ -22,6 +22,7 @@ Span::Span( void ){
 
 Span::Span( size_t n ){
 	this->_max = n;
+	this->vector.reserve(n);//
 }
 
 Span::Span( Span const &origin ){

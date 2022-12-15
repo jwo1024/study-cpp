@@ -14,13 +14,11 @@
 #include 	<iostream>
 #include	<vector>
 
-
 int main( void ){
 	int	arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-
 	iter<int>(arr, 10, func);
- 
+
 	std::cout << std::endl;
 	iter<int>(arr, 10, my_print);
 
