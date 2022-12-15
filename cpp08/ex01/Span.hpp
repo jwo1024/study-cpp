@@ -15,6 +15,7 @@
 
 #include	<vector>
 #include	<exception>
+#include	<cstddef>
 
 class Span{
 private:

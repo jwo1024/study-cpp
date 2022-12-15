@@ -10,8 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include	"Span.hpp"
- #include	<iostream>
+#include	"Span.hpp"
+#include	<iostream>
+#include	<vector>
+#include	<ctime>
+#include	<cstdlib>
 
 // int main() {
 // 	Span sp = Span(7);
@@ -30,9 +33,7 @@
 // 	return 0; 
 // }
 
-#include "Span.hpp"
 
-#include <vector>
 
 int main(){
 
