@@ -14,9 +14,7 @@
 
 #include	<iostream>
 #include	<algorithm>
-#include	<numeric> // 수치 알고리즘
-// vector size 메모리 안의 요소 개수
-// vector capacity 할당된 메모리의 크기
+#include	<numeric>
 
 Span::Span( void ){
 	this->_max = 0;
@@ -39,7 +37,6 @@ Span &Span::operator=( Span const &origin ){
 }
 
 void	Span::addNumber( int value ){
-//	std::cout << "value " << value << " add num : " << this->_max << " " << this->_vect.size() << " " <<  this->_max - this->_vect.size()  << std::endl;
 	if (this->_max <= this->_vect.size())
 		throw Span::CanNotAddNumbersException();
 	this->_vect.push_back(value);
@@ -65,7 +62,7 @@ int	Span::shortestSpan( void ) {
 int	Span::longestSpan( void ) const{
 	if(this->_vect.size() <= 1)
 		throw Span::LackOfNumbersException();
-	int	max = *std::max_element(this->_vect.begin(), this->_vect.end()); // just std::min도 있음 먼차이
+	int	max = *std::max_element(this->_vect.begin(), this->_vect.end());
 	int	min = *std::min_element(this->_vect.begin(), this->_vect.end());	
 	return max - min;
 }

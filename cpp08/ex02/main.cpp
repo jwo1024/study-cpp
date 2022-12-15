@@ -23,19 +23,23 @@ int main()
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
+	
 		std::cout << "----------- print mstack ... -----------" << std::endl;
-		std::cout << mstack.top() << std::endl; // cout 17
+		std::cout << "mstack top : " << mstack.top() << std::endl; // cout 17
 
 		mstack.pop(); // pop 17
-		std::cout << mstack.size() << std::endl; // cout 1;
 
-		mstack.push(3); mstack.push(5); mstack.push(737); //[...] mstack.push(0);
-		
+		std::cout << "size : "<<  mstack.size() << std::endl; // cout 1;
+
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+
 		MutantStack<int>::iterator it = mstack.begin();
 		MutantStack<int>::iterator ite = mstack.end();
 
-		std::cout << *(++it) << std::endl; // second element 3
-		std::cout << *(--it) << std::endl; // first element 5
+		std::cout << "*(++it) : " << *(++it) << std::endl; // second element 3
+		std::cout << "*(--it) : " << *(--it) << std::endl; // first element 5
 
 		std::cout << "----------- print mstack, from begin to end -----------" << std::endl;
 		while (it != ite) {
@@ -44,7 +48,7 @@ int main()
 		}
 
 		std::stack<int> s(mstack);
-		std::cout << "----------- pop stack s -----------" << std::endl;
+		std::cout << "----------- pop stack s (use copy constructor) -----------" << std::endl;
 		while (!s.empty()) {
 			std::cout << s.top() << std::endl; // 5, 3, 5, 737
 			s.pop();
@@ -52,7 +56,7 @@ int main()
 
 		std::stack<int> sss;
 		sss = mstack;
-		std::cout << "----------- pop stack sss -----------" << std::endl;
+		std::cout << "----------- pop stack sss (use = ) -----------" << std::endl;
 		while (!sss.empty()) {
 			std::cout << sss.top() << std::endl; // 5, 3, 5, 737
 			sss.pop();
@@ -76,18 +80,17 @@ int main()
 		std::list<char>::iterator my_list_begin = my_list.begin();
 		std::list<char>::iterator my_list_end = my_list.end();
 
-		for (; my_iter_begin != my_iter_end; my_iter_begin++ , my_list_begin++)
+		for (; my_iter_begin != my_iter_end; my_iter_begin++)
 		{
-			std::cout << *my_iter_begin << ", " << *my_list_begin << std::endl;
+			std::cout << "mutantstack : " << *my_iter_begin << std::endl;
 		}
-		
-		my_iter_begin = my_stack.begin();
-		for (; my_iter_begin <= my_iter_end; --my_iter_end , --my_list_end)
+	
+		for (; my_list_begin != my_list_end; my_list_begin++)
 		{
-			std::cout << *my_iter_end << ", " << *my_list_end << std::endl;
+			std::cout << "list : " << *my_list_begin << std::endl;
 		}
 
-
+		/* print reverse way */
 		MutantStack<char>::reverse_iterator my_iter_rbegin = my_stack.rbegin();
 		MutantStack<char>::reverse_iterator my_iter_rend = my_stack.rend();
 	
@@ -101,7 +104,7 @@ int main()
 
 		for (; my_list_rbegin != my_list_rend; my_list_rbegin++)
 		{
-			std::cout << "mutantstack : "<< *my_list_rbegin << std::endl;
+			std::cout << "list : "<< *my_list_rbegin << std::endl;
 		}
 
 	}
@@ -130,7 +133,8 @@ int main()
 		{
 			std::cout << "vector : " << *my_vector_begin << std::endl;
 		}
-		
+
+		/* print reverse way */
 		MutantStack<std::string>::const_reverse_iterator my_iter_rbegin = my_stack.rbegin();
 		MutantStack<std::string>::const_reverse_iterator my_iter_rend = my_stack.rend();
 	

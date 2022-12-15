@@ -18,7 +18,7 @@
 
 class Span{
 private:
-	std::vector<int> _vect; // ? multiset 컨테이너 // vector
+	std::vector<int> _vect;
 	size_t _max;
 public:
 	Span( void );
@@ -28,25 +28,21 @@ public:
 
 	Span &operator=( Span const &origin );
 
-	void	addNumber( int value ); /// N 개 초과시 exception
+	void	addNumber( int value );
 	void	addRange( std::vector<int>::iterator begin, std::vector<int>::iterator end );
 	int		shortestSpan( void ); 
-	int		longestSpan( void ) const; // no span can be found. Thus, throw an exception.
+	int		longestSpan( void ) const;
 
 	void	printAll( void ) const;
 
 	class CanNotAddNumbersException : public std::exception{
 		public:
-			const char *what() const throw(); // 맞나
+			const char *what() const throw();
 	};
 	class LackOfNumbersException : public std::exception{
 		public:
-			const char *what() const throw(); // 맞나
+			const char *what() const throw();
 	};
 };
 
 #endif
-
-//abs 절댓값
-// sort 
-// adjacent_difference

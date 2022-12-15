@@ -24,7 +24,7 @@ class EasyFindException : public std::exception{
 		}
 };
 
-template <class C> // typename
+template <typename C>
 typename C::iterator easyfind( C &container, int const value ){
 	typename C::iterator iter;
 
@@ -33,5 +33,6 @@ typename C::iterator easyfind( C &container, int const value ){
 		throw EasyFindException();
 	return iter;
 }
+
 
 #endif

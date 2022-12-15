@@ -30,16 +30,16 @@
 // 	return 0; 
 // }
 
-//#include "Span.hpp"
+#include "Span.hpp"
 
 #include <vector>
 
-void	func(){
-	system("leaks ex01");
-}
-
 int main(){
+
+/*  test basic Span shortestSpan & longestSpan */
+	std::cout << "\n---------- test basic Span shortestSpan & longestSpan ---------" << std::endl;
 	try{
+		/* sp */
 		Span sp = Span(5);
 
 		sp.addNumber(5);
@@ -68,7 +68,7 @@ int main(){
 		std::cout << "an shortestSpan : "<< an.shortestSpan() << std::endl;
 		std::cout << "an longestSpan : " << an.longestSpan() << std::endl;
 
-		std::cout << "\n---------- check 'an = copy' does work ---------" << std::endl;
+		std::cout << "\n---------- check 'an = copy' work ---------" << std::endl;
 		std::cout << "---------- an print all ---------" << std::endl;
 		an.printAll();
 		std::cout << "---------- copy print all ---------" << std::endl;
@@ -91,8 +91,8 @@ int main(){
 
 		for (size_t i = 0; i < 100000; i++)
 		{		
-			srand(time(NULL) * i);
-			arr.addNumber(rand() % 10000000);
+			std::srand(std::time(NULL) * i);
+			arr.addNumber(std::rand() % 10000000);
 		}
 		std::cout << "finish add 100000 numbers" << std::endl;	
 		std::cout << "arr shortestSpan : " << arr.shortestSpan() << std::endl;
@@ -156,8 +156,5 @@ int main(){
 		std::cout << e.what() << std::endl;
 	}
 
-//	atexit(func);
 	return 0;
 }
-
-
