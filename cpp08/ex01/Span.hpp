@@ -19,10 +19,10 @@
 class Span{
 private:
 	std::vector<int> _vect; // ? multiset 컨테이너 // vector
-	unsigned int _max;
+	size_t _max;
 public:
 	Span( void );
-	Span( unsigned int n );
+	Span( size_t n );
 	Span( Span const &origin );
 	~Span( void );
 
@@ -35,7 +35,7 @@ public:
 
 	void	printAll( void ) const;
 
-	class FullOfNumbersException : public std::exception{
+	class CanNotAddNumbersException : public std::exception{
 		public:
 			const char *what() const throw(); // 맞나
 	};
