@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 02:18:11 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/15 03:30:32 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 22:07:42 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int main(){
 		int test1[] = {1000, 29 , 243241, 5634532, 2, 35, 566, 111, -4543, -32, -24};
 		std::vector<int> test2(test1, test1 + sizeof(test1)/sizeof(int));
 
-		an.addRange(test2.begin(), test2.end());
+		an.addRange< std::vector<int> >(test2.begin(), test2.end());
 	
 		std::cout << "an shortestSpan : "<< an.shortestSpan() << std::endl;
 		std::cout << "an longestSpan : " << an.longestSpan() << std::endl;
@@ -84,15 +84,14 @@ int main(){
 		std::cout << e.what() << std::endl;
 	}
 
-
 /* 100000 element  Check */
 	std::cout << "\n---------- 100000 element  Check ---------" << std::endl;
 	try{
 		Span arr(100000);
 
+		std::srand(std::time(NULL));
 		for (size_t i = 0; i < 100000; i++)
-		{		
-			std::srand(std::time(NULL) * i);
+		{
 			arr.addNumber(std::rand() % 10000000);
 		}
 		std::cout << "finish add 100000 numbers" << std::endl;	
@@ -127,7 +126,7 @@ int main(){
 
 		int test1[] = {1000, 29 , 243241, 5634532, 2, 3, 35, 566, 111, -4543, -32, -24};
 		std::vector<int> test2(test1, test1 + sizeof(test1)/sizeof(int));
-		an.addRange(test2.begin(), test2.end());
+		an.addRange< std::vector<int> >(test2.begin(), test2.end());
 	}
 	catch (std::exception & e){
 		std::cout << e.what() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:28:48 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/15 12:14:51 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 21:53:42 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Span::Span( void ){
 
 Span::Span( size_t n ){
 	this->_max = n;
-	this->vector.reserve(n);//
+	this->_vect.reserve(n);
 }
 
 Span::Span( Span const &origin ){
@@ -34,6 +34,7 @@ Span::~Span( void ){}
 Span &Span::operator=( Span const &origin ){
 	this->_max = origin._max;
 	this->_vect = origin._vect;
+	this->_vect.reserve(this->_max);
 	return *this;
 }
 
@@ -41,14 +42,6 @@ void	Span::addNumber( int value ){
 	if (this->_max <= this->_vect.size())
 		throw Span::CanNotAddNumbersException();
 	this->_vect.push_back(value);
-}
-
-
-void	Span::addRange( std::vector<int>::iterator begin, std::vector<int>::iterator end ){
-	std::vector<int> add_range(begin, end); // ? 두번 붙여쓰기한다는 단점이 있다.
-	if (this->_max - this->_vect.size() < add_range.size())
-		throw Span::CanNotAddNumbersException();
-	this->_vect.insert(this->_vect.end(), begin, end);
 }
 
 int	Span::shortestSpan( void ) {

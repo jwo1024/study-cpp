@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:29:08 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/15 02:29:13 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 21:56:57 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@ public:
 	Span &operator=( Span const &origin );
 
 	void	addNumber( int value );
-	void	addRange( std::vector<int>::iterator begin, std::vector<int>::iterator end );
+
+	template <typename C>
+	void	addRange( typename C::iterator begin, typename C::iterator end ){
+		if (this->_max - this->_vect.size() < static_cast<unsigned long>(std::distance(begin, end)))
+			throw Span::CanNotAddNumbersException();
+		this->_vect.insert(this->_vect.end(), begin, end);
+	};
+
 	int		shortestSpan( void ); 
 	int		longestSpan( void ) const;
 

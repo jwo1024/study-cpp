@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:26:04 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/14 23:44:29 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 22:25:50 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,23 @@ class EasyFindException : public std::exception{
 };
 
 template <typename C>
-typename C::iterator easyfind( C &container, int const value ){
+typename C::iterator easyfind( C &container, int value ){
 	typename C::iterator iter;
 
-	iter = std::find( container.begin(), container.end(), value);
+	iter = std::find(container.begin(), container.end(), value);
 	if (iter == container.end())
 		throw EasyFindException();
 	return iter;
 }
 
+template <typename C>
+typename C::const_iterator easyfind( C const &container, int value ){
+	typename C::const_iterator iter;
+
+	iter = std::find(container.begin(), container.end(), value);
+	if (iter == container.end())
+		throw EasyFindException();
+	return iter;
+}
 
 #endif

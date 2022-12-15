@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:24:45 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/15 08:53:59 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 22:21:15 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main( void ){
 		std::vector<int> vector_container( vector_arr, vector_arr + (sizeof(vector_arr)/sizeof(int)) );
 	
 		try{ // search 3 & print form 3 to end
-			std::vector<int>::iterator v_iter = easyfind< std::vector<int> >(vector_container, 3);
+			std::vector<int>::iterator v_iter = easyfind(vector_container, 3);
 
 			while (v_iter != vector_container.end())
 				std::cout << *(v_iter++) << std::endl;
@@ -35,7 +35,7 @@ int	main( void ){
 			std::cerr << e.what() << std::endl;
 		}
 		try{ // search 400 & fail exception
-			std::vector<int>::iterator v_iter = easyfind< std::vector<int> >(vector_container, 400);
+			std::vector<int>::iterator v_iter = easyfind(vector_container, 400);
 
 			while (v_iter != vector_container.end())
 				std::cout << *(v_iter++) << std::endl;
