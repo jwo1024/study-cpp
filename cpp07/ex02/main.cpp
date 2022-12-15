@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:55:23 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/14 09:59:15 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/15 12:06:06 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,31 @@ int main(int, char**)
         mirror[i] = value;
     }
     //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+
+    Array<int> tmp = numbers;
+    Array<int> test(tmp);
 
     for (int i = 0; i < MAX_VAL; i++)
     {
 	//	std::cout << mirror[i] << " " <<  numbers[i] << std::endl;
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "1didn't save the same value!!" << std::endl;
+            return 1;
+        }
+        if (mirror[i] != tmp[i])
+        {
+            std::cerr << "2didn't save the same value!!" << std::endl;
+            return 1;
+        }
         if (mirror[i] != test[i])
         {
-            std::cerr << "didn't save the same value!!" << std::endl;
+            std::cerr << "3didn't save the same value!!" << std::endl;
             return 1;
         }
     }
+
+
     try
     {
         numbers[-2] = 0;

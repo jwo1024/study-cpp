@@ -6,7 +6,7 @@
 /*   By: jiwolee <jiwolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:55:23 by jiwolee           #+#    #+#             */
-/*   Updated: 2022/12/14 09:59:15 by jiwolee          ###   ########seoul.kr  */
+/*   Updated: 2022/12/14 21:18:11 by jiwolee          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
 	unsigned int	_size;
 public:
 	Array( void );
-	Array( unsigned int n ); // initialized by default. ?
+	Array( unsigned int n );
 	Array( Array const &origin );
 	~Array( void );
 
