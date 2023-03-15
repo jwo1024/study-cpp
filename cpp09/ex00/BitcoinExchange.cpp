@@ -33,8 +33,9 @@ BitcoinExchange	&BitcoinExchange::operator=( BitcoinExchange const &origin )
 void	BitcoinExchange::readCsvFile( std::string file_name )
 {
 	std::string	line;
-	std::ifstream scv_file(file_name);
+	std::ifstream scv_file;
 
+	scv_file.open(file_name.c_str());
 	if (scv_file.is_open())
 	{
 		getline(scv_file, line); // 첫번째 줄 무시
@@ -169,7 +170,7 @@ void	BitcoinExchange::evaluateDatabaseFile( std::string file_name)  // readDataf
 		std::cout << "Error: no csv data" << std::endl;
 		return ;
 	}
-	database.open(file_name);
+	database.open(file_name.c_str()); //
 	if (database.is_open()){
 
 		getline(database, line); // 첫번째 줄 무시 data | value 
