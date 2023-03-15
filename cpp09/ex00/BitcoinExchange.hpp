@@ -9,14 +9,20 @@
 # include	<time.h>
 // time_t
 
+// <typename key = std::string, typename value = double >
 class BitcoinExchange{
 private:
-	std::map< std::string, float >	_csv_data; // template ?
+	std::map< std::string, double >	_csv_data; // template ?
 
 	void	readCsvFile( std::string file_name );
 	void	insertCsvData( std::string line );
-	float	strToFloat( std::string str );
 
+	double	strToDouble( std::string str );
+	int		isValidDate( std::string date );
+
+
+	void	showExchangeRate( std::string line );
+	double	multipleWithExchangeRate( std::string date, double value );
 
 public:
 	BitcoinExchange( void );
@@ -26,6 +32,9 @@ public:
 
 	BitcoinExchange &operator=( BitcoinExchange const &origin );
 
+
+	
+	void	evaluateDatabaseFile( std::string string);
 
 
 /*
