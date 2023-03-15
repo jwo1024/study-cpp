@@ -11,7 +11,7 @@ int	main(int argc, char *argv[])
 	{
 		BitcoinExchange	b;
 
-		b.evaluateDatabaseFile(argv[1]);
+		b.readInputDatabaseFile(argv[1]);
 
 	}
 	else
