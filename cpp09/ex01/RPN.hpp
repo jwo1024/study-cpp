@@ -7,11 +7,11 @@
 class RPN{
 private:
 	std::stack<int>	_num_stack;
-	int				_result; // x
 
 	bool	isStrOperator( std::string const &str ) const;
 	bool	isStrDigit( std::string const &str ) const;
 	int		strToInt( std::string const &str ) const;
+//	clearStack();
 
 	int		calculate( std::string const &str );
 	int		getTopAndPop( void );
@@ -25,8 +25,6 @@ public:
 	RPN &operator=( RPN const &origin );
 
 	int		calculateRPN( std::string str );
-//	void	clearStack();
-//	void	insertExpression( std::string str );
 
 };
 

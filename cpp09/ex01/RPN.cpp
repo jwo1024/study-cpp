@@ -29,10 +29,9 @@ RPN::~RPN( void )
 
 RPN &RPN::operator=( RPN const &origin )
 {
-	this->_result = origin._result;
+	this->_num_stack = origin._num_stack;
 	return *this;
 }
-
 
 
 /* ====== RPN ====== */
@@ -41,10 +40,8 @@ int	RPN::calculateRPN( std::string str )
 {
 	size_t				pos = 0;
 	std::string			token;
-//	std::stack<int>		_num_stack;
 	int					result;
 
-	this->_result = 0;
 	str = str.substr(str.find_first_not_of(" "));
 	while (pos != std::string::npos)
 	{
@@ -69,11 +66,12 @@ int	RPN::calculateRPN( std::string str )
 	// 숫자가 남았을 경우 error
 	if (this->_num_stack.size() != 1)
 	{
-		; //error 
+	//	clear stack
+		std::cout << "Error" << std::endl;
+		return 0;
 	}
 
-	result = this->_num_stack.top();// getTopAndPop();
-	this->_num_stack.pop();
+	result = RPN::getTopAndPop();
 
 	std::cout << "result : " << result << std::endl;
 
@@ -87,11 +85,8 @@ int	RPN::calculate( std::string const &str ) //bool
 	if (this->_num_stack.size() < 2)
 		return 0; // error; false
 
-	num1 = this->_num_stack.top(); // getTopAndPop();
-	this->_num_stack.pop();
-	num2 = this->_num_stack.top();
-	this->_num_stack.pop();
-
+	num1 = RPN::getTopAndPop();
+	num2 = RPN::getTopAndPop();
 	if (str.compare("+") == 0)
 		this->_num_stack.push(num2 + num1);
 	else if (str.compare("-") == 0)
@@ -103,6 +98,7 @@ int	RPN::calculate( std::string const &str ) //bool
 
 	return this->_num_stack.top(); // true;
 }
+
 
 /* ====== UTILS ======*/
 
@@ -140,7 +136,4 @@ int RPN::strToInt( std::string const &str ) const
 	stream >> value;
 	return value;
 }
-
-
-
 

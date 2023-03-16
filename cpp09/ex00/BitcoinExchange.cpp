@@ -3,6 +3,8 @@
 
 #include	<fstream>
 #include	<iostream>
+#include	<sstream>
+#include	<string>
 
 BitcoinExchange::BitcoinExchange( void )
 {
@@ -85,7 +87,7 @@ bool	BitcoinExchange::insertCsvData( std::string line )
 
 /* ===== READ INPUT DATA BASE ===== */
 
-void	BitcoinExchange::readInputDatabaseFile( std::string file_name )  // readDatafile
+void	BitcoinExchange::readInputDatabaseFile( std::string file_name )
 {
 	std::string	line;
 	std::ifstream database;
@@ -109,7 +111,7 @@ void	BitcoinExchange::readInputDatabaseFile( std::string file_name )  // readDat
 		database.close();
 	}
 	else
-		std::cout << "Error: could not open file" << std::endl; // no data.scv file error or exception
+		std::cout << "Error: could not open file" << std::endl;
 }
 
 void	BitcoinExchange::showExchangeRate( std::string line )
@@ -139,13 +141,13 @@ void	BitcoinExchange::showExchangeRate( std::string line )
 	}
 }
 
-double	BitcoinExchange::multipleWithExchangeRate( std::string date, double value )  // const? 
+double	BitcoinExchange::multipleWithExchangeRate( std::string date, double value )
 {
-	typedef std::map< std::string, double >::iterator iter; // typedef typename
+	typedef std::map< std::string, double >::iterator iter;
 	std::pair< iter, iter > pair;
 	double					rtn;
 
-	pair = this->_csv_data.equal_range(date);
+	pair = this->_csv_data.equal_range(date); // const ..
 	if (pair.first == this->_csv_data.begin() && pair.first == pair.second)
 		return 0;
 	if (pair.first == pair.second)
@@ -172,6 +174,7 @@ int BitcoinExchange::strToInt( std::string str ) const
 	int					value;
 	std::stringstream	stream;
 
+	// is digit ? 
 	stream.str(str);
 	stream >> value;
 	return value;
@@ -183,7 +186,7 @@ bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 	size_t	pos1, pos2;
 	int		month, day;
 
-	if (!BitcoinExchange::isStrDate(date))
+	if (!BitcoinExchange::isStrDateFormat(date))
 		return false;
 	pos1 = date.find("-") + 1;
 	pos2 = date.find("-", pos1) + 1;
@@ -202,7 +205,7 @@ bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 
 bool	BitcoinExchange::isStrDigit( std::string const &str ) const
 {
-	if (str.empty() && str.find_first_not_of("0123456789") == std::string::npos)
+	if (str.empty() || str.find_first_not_of("0123456789") == std::string::npos) // empty
 		return false;
 	return true;
 }
@@ -220,7 +223,8 @@ bool	BitcoinExchange::isStrDouble( std::string const &str ) const
 	return true;
 }
 
-bool	BitcoinExchange::isStrDate( std::string const &str ) const // YYYY-MM-DD
+// YYYY-MM-DD
+bool	BitcoinExchange::isStrDateFormat( std::string const &str ) const
 {
 	size_t	pos;
 
