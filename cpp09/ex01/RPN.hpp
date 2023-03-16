@@ -11,9 +11,9 @@ private:
 	bool	isStrOperator( std::string const &str ) const;
 	bool	isStrDigit( std::string const &str ) const;
 	int		strToInt( std::string const &str ) const;
-//	clearStack();
+	void	clearStack( void );
 
-	int		calculate( std::string const &str );
+	bool	calculate( std::string const &str );
 	int		getTopAndPop( void );
 
 public:
@@ -22,10 +22,9 @@ public:
 	RPN( RPN const &origin );
 	~RPN( void );
 
-	RPN &operator=( RPN const &origin );
+	RPN	&operator=( RPN const &origin );
 
-	int		calculateRPN( std::string str );
-
+	int	calculateRPN( std::string str );
 };
 
 

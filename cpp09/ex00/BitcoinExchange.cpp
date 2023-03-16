@@ -121,14 +121,22 @@ void	BitcoinExchange::showExchangeRate( std::string line )
 	size_t		pos;
 	
 	pos = line.find("|");
-	if (pos == std::string::npos)
+	if (pos != std::string::npos)
+	{
+		date = line.substr(0, pos - 1);	
+		value = BitcoinExchange::strToDouble(line.substr(pos + 2, line.length()));
+	}
+	else if (line.empty())
 		return ;
-	date = line.substr(0, pos - 1);
-	value = BitcoinExchange::strToDouble(line.substr(pos + 2, line.length()));
+	else
+	{
+		date = line;
+		value = 0;
+	}
 
 	if (!BitcoinExchange::isValidDate(date))
 		std::cout << "Error: bad input => " << date << std::endl;
-	else if (value == 0 && !BitcoinExchange::isStrDouble(line.substr(pos + 2, line.length())))
+	else if (value == 0 && !BitcoinExchange::isStrDouble(line.substr(pos + 2, line.length()))) // substr DANGER
 		std::cout << "Error: bad input value => " << line << std::endl;
 	else if (value < 0)
 		std::cout << "Error: not a positive number." << std::endl;
@@ -174,7 +182,6 @@ int BitcoinExchange::strToInt( std::string str ) const
 	int					value;
 	std::stringstream	stream;
 
-	// is digit ? 
 	stream.str(str);
 	stream >> value;
 	return value;
@@ -205,7 +212,7 @@ bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 
 bool	BitcoinExchange::isStrDigit( std::string const &str ) const
 {
-	if (str.empty() || str.find_first_not_of("0123456789") == std::string::npos) // empty
+	if (str.empty() || str.find_first_not_of("0123456789") != std::string::npos) // empty
 		return false;
 	return true;
 }

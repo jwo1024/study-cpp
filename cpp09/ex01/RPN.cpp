@@ -42,49 +42,55 @@ int	RPN::calculateRPN( std::string str )
 	std::string			token;
 	int					result;
 
+	if (str.empty())
+	{
+		
+		return 0;
+	}
 	str = str.substr(str.find_first_not_of(" "));
 	while (pos != std::string::npos)
 	{
 		pos = str.find_first_not_of("0123456789+-/*");
 		token = str.substr(0, pos);
-		str = str.substr(pos + 1);
+		str = str.substr(pos + 1); // out of range exception. if no value !
 
 		if (RPN::isStrDigit(token))
 			_num_stack.push(RPN::strToInt(token));
 		else if (RPN::isStrOperator(token))
 		{
-			RPN::calculate(token);
+			if (!RPN::calculate(token))
+				return 0;
 		}
 		else
 		{
-			// clear stack
+			RPN::clearStack();
 			std::cout << "Error" << std::endl;
 			return 0;
 		}
 	}
-
-	// 숫자가 남았을 경우 error
-	if (this->_num_stack.size() != 1)
+	if (this->_num_stack.size() == 1)
 	{
-	//	clear stack
-		std::cout << "Error" << std::endl;
+		result = RPN::getTopAndPop();
+		std::cout << result << std::endl;
+		return result;
+	}
+	else
+	{
+		RPN::clearStack();
+		std::cout << "Error: have remaining numbers" << std::endl;
 		return 0;
 	}
-
-	result = RPN::getTopAndPop();
-
-	std::cout << "result : " << result << std::endl;
-
-	return result;
 }
 
-int	RPN::calculate( std::string const &str ) //bool
+bool	RPN::calculate( std::string const &str ) //bool
 {
 	int	num1, num2;
 
 	if (this->_num_stack.size() < 2)
-		return 0; // error; false
-
+	{
+		std::cout << "Error: lack of number" << std::endl;
+		return false;
+	}
 	num1 = RPN::getTopAndPop();
 	num2 = RPN::getTopAndPop();
 	if (str.compare("+") == 0)
@@ -95,8 +101,7 @@ int	RPN::calculate( std::string const &str ) //bool
 		this->_num_stack.push(num2 / num1);
 	else if (str.compare("*") == 0)
 		this->_num_stack.push(num2 * num1);
-
-	return this->_num_stack.top(); // true;
+	return true;
 }
 
 
@@ -113,12 +118,10 @@ int		RPN::getTopAndPop( void )
 
 bool	RPN::isStrDigit( std::string const &str ) const
 {
-	// str 이 비어있거나 0123457
 	if (str.empty() || str.find_first_not_of("0123456789") != std::string::npos)
 		return false;
 	return true;
 }
-
 
 bool	RPN::isStrOperator( std::string const &str ) const
 {
@@ -136,4 +139,12 @@ int RPN::strToInt( std::string const &str ) const
 	stream >> value;
 	return value;
 }
+
+void	RPN::clearStack( void )
+{
+	while (!this->_num_stack.empty())
+		this->_num_stack.pop();
+}
+
+
 
