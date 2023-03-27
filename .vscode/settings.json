@@ -72,6 +72,8 @@
 		"set": "cpp",
 		"__tree": "cpp",
 		"map": "cpp",
-		"numeric": "cpp"
+		"numeric": "cpp",
+		"__functional_03": "cpp",
+		"memory_resource": "cpp"
 	}
 }

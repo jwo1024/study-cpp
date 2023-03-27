@@ -12,9 +12,10 @@ private:
 	bool	isStrDigit( std::string const &str ) const;
 	int		strToInt( std::string const &str ) const;
 	void	clearStack( void );
+	int		getTopAndPop( void );
 
 	bool	calculate( std::string const &str );
-	int		getTopAndPop( void );
+	int		printResult( void );
 
 public:
 	RPN( void );
@@ -24,7 +25,7 @@ public:
 
 	RPN	&operator=( RPN const &origin );
 
-	int	calculateRPN( std::string str );
+	int	readRPN( std::string str );
 };
 
 

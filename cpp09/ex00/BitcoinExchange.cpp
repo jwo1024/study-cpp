@@ -8,7 +8,12 @@
 
 BitcoinExchange::BitcoinExchange( void )
 {
-	BitcoinExchange::readCsvFile("data.csv");
+	;
+}
+
+BitcoinExchange::BitcoinExchange( std::string &csv_file )
+{
+	BitcoinExchange::readCsvFile(csv_file);
 }
 
 BitcoinExchange::BitcoinExchange( BitcoinExchange const &origin )
@@ -35,6 +40,8 @@ void	BitcoinExchange::readCsvFile( std::string file_name )
 	std::string	line;
 	std::ifstream scv_file;
 
+	if(!this->_csv_data.empty())
+		this->_csv_data.clear();
 	scv_file.open(file_name.c_str());
 	if (scv_file.is_open())
 	{
@@ -58,9 +65,9 @@ void	BitcoinExchange::readCsvFile( std::string file_name )
 		std::cout << "Error: could not open csv file" << std::endl;
 }
 
-bool	BitcoinExchange::insertCsvData( std::string line )
+bool	BitcoinExchange::insertCsvData( std::string line ) // insertCsvFileLine
 {
-	std::string	date;
+	std::string	date, str_exchange_rate;
 	double		exchange_rate;
 	size_t		pos;
 
@@ -70,8 +77,10 @@ bool	BitcoinExchange::insertCsvData( std::string line )
 	if (pos != std::string::npos || pos + 1 != line.size())
 	{
 		date = line.substr(0, pos);
-		exchange_rate = BitcoinExchange::strToDouble(line.substr(pos + 1, line.length()));
-		if (BitcoinExchange::isValidDate(date))
+		str_exchange_rate = line.substr(pos + 1, line.length());
+		exchange_rate = BitcoinExchange::strToDouble(str_exchange_rate);
+		if (BitcoinExchange::isValidDate(date) && (exchange_rate != 0 || \
+			(exchange_rate == 0 && str_exchange_rate.find_first_not_of("0.") == std::string::npos)))
 		{
 			this->_csv_data.insert( std::pair<std::string, double>(date, exchange_rate));
 			return true;
@@ -87,7 +96,7 @@ bool	BitcoinExchange::insertCsvData( std::string line )
 
 /* ===== READ INPUT DATA BASE ===== */
 
-void	BitcoinExchange::readInputDatabaseFile( std::string file_name )
+void	BitcoinExchange::readInputDatabaseFile( std::string file_name ) // readDatabaseFile
 {
 	std::string	line;
 	std::ifstream database;
@@ -104,7 +113,7 @@ void	BitcoinExchange::readInputDatabaseFile( std::string file_name )
 		if (line == "date | value")
 		{
 			while (getline(database, line))
-				BitcoinExchange::showExchangeRate(line);
+				BitcoinExchange::readDatabaseLine(line);
 		}
 		else
 			std::cout << "Error: is not valid data format" << std::endl;
@@ -114,39 +123,42 @@ void	BitcoinExchange::readInputDatabaseFile( std::string file_name )
 		std::cout << "Error: could not open file" << std::endl;
 }
 
-void	BitcoinExchange::showExchangeRate( std::string line )
+void	BitcoinExchange::readDatabaseLine( std::string line )
 {
-	std::string date, str_value;
-	double		value, multipled;
 	size_t		pos;
-	
-	pos = line.find("|");
-	if (pos != std::string::npos)
-	{
-		date = line.substr(0, pos - 1);	
-		value = BitcoinExchange::strToDouble(line.substr(pos + 2, line.length()));
-	}
-	else if (line.empty())
-		return ;
-	else
-	{
-		date = line;
-		value = 0;
-	}
+	std::string	date, value_str;
+	double		value;
 
-	if (!BitcoinExchange::isValidDate(date))
+	pos = line.find(" | ");
+	date = line.substr(0, pos);
+	if (line.empty())
+		;
+	else if (!BitcoinExchange::isValidDate(date))
 		std::cout << "Error: bad input => " << date << std::endl;
-	else if (value == 0 && !BitcoinExchange::isStrDouble(line.substr(pos + 2, line.length()))) // substr DANGER
-		std::cout << "Error: bad input value => " << line << std::endl;
-	else if (value < 0)
-		std::cout << "Error: not a positive number." << std::endl;
-	else if (value > 1000)
-		std::cout << "Error: too large a number." << std::endl;
+	else if (line.length() < 14)
+		std::cout << "Error: bad input => " << line << std::endl;
 	else
 	{
-		multipled = BitcoinExchange::multipleWithExchangeRate(date, value);
-		std::cout << date << " => " << value << " = " << multipled <<std::endl;
+		value_str = line.substr(pos + 3, line.length());
+		value = BitcoinExchange::strToDouble(value_str);
+	
+		if (value < 0)
+			std::cout << "Error: not a positive number." << std::endl;
+		else if (value > 1000)
+			std::cout << "Error: too large a number." << std::endl;
+		else if (value == 0 && value_str.find_first_not_of("0.") != std::string::npos)
+			std::cout << "Error: bad input : value => " << value_str << std::endl;
+		else
+			BitcoinExchange::showExchangeRate(date, value);
 	}
+}
+
+void	BitcoinExchange::showExchangeRate( std::string date, double value ) // show calculate
+{
+	double	multipled;
+
+	multipled = BitcoinExchange::multipleWithExchangeRate(date, value);
+	std::cout << date << " => " << value << " = " << multipled << std::endl;
 }
 
 double	BitcoinExchange::multipleWithExchangeRate( std::string date, double value )
@@ -155,7 +167,7 @@ double	BitcoinExchange::multipleWithExchangeRate( std::string date, double value
 	std::pair< iter, iter > pair;
 	double					rtn;
 
-	pair = this->_csv_data.equal_range(date); // const ..
+	pair = this->_csv_data.equal_range(date); // not const ..
 	if (pair.first == this->_csv_data.begin() && pair.first == pair.second)
 		return 0;
 	if (pair.first == pair.second)
@@ -165,6 +177,7 @@ double	BitcoinExchange::multipleWithExchangeRate( std::string date, double value
 }
 
 
+
 /* ===== UTILS ===== */
 
 double BitcoinExchange::strToDouble( std::string str ) const
@@ -172,6 +185,8 @@ double BitcoinExchange::strToDouble( std::string str ) const
 	double				value;
 	std::stringstream	stream;
 
+	if (str.empty())
+		return 0;
 	stream.str(str);
 	stream >> value;
 	return value;
@@ -182,18 +197,19 @@ int BitcoinExchange::strToInt( std::string str ) const
 	int					value;
 	std::stringstream	stream;
 
+	if (str.empty())
+		return 0;
 	stream.str(str);
 	stream >> value;
 	return value;
 }
-
 
 bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 {
 	size_t	pos1, pos2;
 	int		month, day;
 
-	if (!BitcoinExchange::isStrDateFormat(date))
+	if (date.empty() || !BitcoinExchange::isStrDateFormat(date))
 		return false;
 	pos1 = date.find("-") + 1;
 	pos2 = date.find("-", pos1) + 1;
@@ -210,30 +226,11 @@ bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 	return false;
 }
 
-bool	BitcoinExchange::isStrDigit( std::string const &str ) const
-{
-	if (str.empty() || str.find_first_not_of("0123456789") != std::string::npos) // empty
-		return false;
-	return true;
-}
-
-bool	BitcoinExchange::isStrDouble( std::string const &str ) const
-{
-	size_t	pos;
-
-	pos = str.find_first_not_of("0123456789");
-	if (pos != std::string::npos && str[pos] != '.')
-		return false;
-	pos = str.find_first_not_of("0123456789", pos + 1);
-	if (pos != std::string::npos)
-		return false;
-	return true;
-}
-
 // YYYY-MM-DD
 bool	BitcoinExchange::isStrDateFormat( std::string const &str ) const
 {
 	size_t	pos;
+
 
 	pos = str.find_first_not_of("0123456789");
 	if (pos == std::string::npos || str[pos] != '-' || pos != 4)

@@ -4,32 +4,33 @@
 
 # include	<map> 
 
-// template<typename Key = std::string, typename Value = double>
 class BitcoinExchange{
 private:
-	std::map< std::string, double >	_csv_data; // template ?
+	std::map< std::string, double >	_csv_data;
 
-	void	readCsvFile( std::string file_name );
 	bool	insertCsvData( std::string line );
-	void	showExchangeRate( std::string line ); // & 
-	double	multipleWithExchangeRate( std::string date, double value ) ;
+	
+	void	showExchangeRate(  std::string date, double value  );
+	double	multipleWithExchangeRate( std::string date, double value );
+	void	readDatabaseLine( std::string line );
+
 
 	double	strToDouble( std::string str ) const;
 	int		strToInt( std::string str ) const;
 	bool	isValidDate( std::string date ) const;
-	bool	isStrDigit( std::string const &str ) const;
 	bool	isStrDateFormat( std::string const &str ) const;
-	bool	isStrDouble( std::string const &str ) const;
+	// bool isStrDoubleZero( std::string double)
 
 public:
 	BitcoinExchange( void );
+	BitcoinExchange( std::string &csv_file );
 	BitcoinExchange( BitcoinExchange const &origin );
 	~BitcoinExchange( void );
 
 	BitcoinExchange &operator=( BitcoinExchange const &origin );
 
+	void	readCsvFile( std::string file_name );
 	void	readInputDatabaseFile( std::string string );
 };
-
 
 #endif
