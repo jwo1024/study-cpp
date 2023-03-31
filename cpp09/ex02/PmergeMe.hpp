@@ -4,21 +4,29 @@
 
 # include	<vector>
 
-template<typename T>
+// https://learn.microsoft.com/ko-kr/cpp/cpp/templates-cpp?view=msvc-170
+
+template<typename T, template<class _Tp, class _Allocator> class Arr>
 class PmergeMe{
 private:
-	typedef typename T::iterator iterator; // ? doesnt work 
+	typedef typename	Arr<T, std::allocator<T> >::iterator			t_arr_iter; // ? doesnt work 
+	typedef	typename	std::pair<int, int>								t_pair_int;
+	typedef class		Arr<t_pair_int, std::allocator<t_pair_int> >	t_contain_pair;
+	typedef	typename	t_contain_pair::iterator 						t_contain_pair_iter;
 
-	T		_array;
-	double	_sort_time;
-
-	void mergeInsertionSort();
+	Arr<T, std::allocator<T> >	_arr;
+	double						_sort_time;
 	
-	binarySearchInsert();
-	mergeSort();
-	mergeArr();
-	mergePasteArr();
-	swapIntPair();
+	void	makePair( t_contain_pair &pair_arr );
+	void	movePairFristToArr( t_contain_pair &pair_arr );
+
+	void	mergeSort(t_contain_pair &arr, t_contain_pair& merge,  int start, int end);	
+	void	mergeArr(t_contain_pair &arr, t_contain_pair &merge, int start, int end);
+	void	pasteArrNum(t_contain_pair &from_arr, t_contain_pair &to_arr, int *f, int *t);
+
+	void	binaryInsertionSort(t_contain_pair &arr);
+	int		binarySearch(int target, int low);
+	void	insertArr(int target, int pos);
 
 public:
 	PmergeMe( void );
@@ -28,20 +36,16 @@ public:
 	PmergeMe	&operator=( PmergeMe const &origin );
 
 	int	insertUnsortedNumbers( char *argv[] );
-	int	insertUnsortedNumbers( T &arr );
+	int	insertUnsortedNumbers( Arr<T, std::allocator<T> > &arr );
 	int	insertUnsortedNumbers( int *arr	);
 
 	void	showArray();
 	void	sortArray();
-	void	getSortTime(); // double ? 
-
-	;//clearArray();
+	double	getSortTime(); // double ? 
+	void	clear();
 
 };
 
 
+
 # endif
-
-
-
-
