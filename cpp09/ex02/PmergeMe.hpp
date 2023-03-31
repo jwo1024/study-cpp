@@ -9,13 +9,16 @@ class PmergeMe{
 private:
 	typedef typename T::iterator iterator; // ? doesnt work 
 
-	T	result_arr;
-	T	tmp_arr;
+	T		_array;
+	double	_sort_time;
 
-	T	&mergeSort( T<int> &arr );
-
-	template<typename iterator iter>
-	void	insertionSort(iterator start, iterator end,  std::random_access_iterator_tag );
+	void mergeInsertionSort();
+	
+	binarySearchInsert();
+	mergeSort();
+	mergeArr();
+	mergePasteArr();
+	swapIntPair();
 
 public:
 	PmergeMe( void );
@@ -24,10 +27,21 @@ public:
 
 	PmergeMe	&operator=( PmergeMe const &origin );
 
+	int	insertUnsortedNumbers( char *argv[] );
+	int	insertUnsortedNumbers( T &arr );
+	int	insertUnsortedNumbers( int *arr	);
+
+	void	showArray();
+	void	sortArray();
+	void	getSortTime(); // double ? 
+
+	;//clearArray();
 
 };
 
 
-
 # endif
+
+
+
 
