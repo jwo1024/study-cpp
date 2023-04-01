@@ -3,7 +3,8 @@
 # define PMERGEME_HPP
 
 #include	<vector>
-#include	<cstddef>
+//#include	<cstddef>
+#include	<string>
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 class PmergeMe{
@@ -14,7 +15,7 @@ private:
 	typedef	typename	t_contain_pair::iterator							t_contain_pair_iter;
 
 	Arr<T, std::allocator<T> >	_arr;
-	std::clock_t				_sort_time;
+	clock_t						_sort_time;
 
 	size_t	strToSizet( std::string const &str ) const;
 

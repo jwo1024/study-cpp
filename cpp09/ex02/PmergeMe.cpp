@@ -41,7 +41,6 @@ int	PmergeMe<T, Arr>::insertUnsortedNumbers( char *argv[] )
 	{
 		std::string	str = argv[idx];
 		size_t num = strToSizet( argv[idx]);
-	//	std::cout << "idx: " << argv[idx] << "Num" <<  num << std::endl; 
 		if (str.find_first_not_of("0123456789") != std::string::npos)
 		{
 			this->_arr.clear();
@@ -103,7 +102,7 @@ double	PmergeMe<T, Arr>::getSortTime() const
 /* ======= Sort ======= */
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::PmergeMe<T, Arr>::mergeInsertionSort()
+void	PmergeMe<T, Arr>::mergeInsertionSort()
 {
 	t_contain_pair	pair_arr(this->_arr.size() / 2);
 	t_contain_pair	merge(this->_arr.size() / 2);
@@ -140,7 +139,7 @@ void	PmergeMe<T, Arr>::sortArray()
 {
 	if (this->_arr.empty())
 		return ;
-	std::clock_t c_start, c_end;
+	clock_t	c_start, c_end;
 
 	c_start = clock();
 	if (this->_arr.size() > 1)
