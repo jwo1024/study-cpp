@@ -3,6 +3,7 @@
 # define BITCOIN_EXCHANGE_HPP
 
 # include	<map> 
+# include	<string>
 
 class BitcoinExchange{
 private:
@@ -19,7 +20,6 @@ private:
 	int		strToInt( std::string str ) const;
 	bool	isValidDate( std::string date ) const;
 	bool	isStrDateFormat( std::string const &str ) const;
-	// bool isStrDoubleZero( std::string double)
 
 public:
 	BitcoinExchange( void );

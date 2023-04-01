@@ -34,7 +34,7 @@ RPN &RPN::operator=( RPN const &origin )
 
 /* ====== RPN ====== */
 
-int	RPN::readRPN( std::string str ) // ? read
+int	RPN::readRPN( std::string str )
 {
 	size_t				pos = 0;
 	std::string			token;

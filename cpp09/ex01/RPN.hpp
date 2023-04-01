@@ -3,6 +3,7 @@
 # define RPN_HPP
 
 # include	<stack>
+#include	<string>
 
 class RPN{
 private:
@@ -28,6 +29,4 @@ public:
 	int	readRPN( std::string str );
 };
 
-
 # endif
-
