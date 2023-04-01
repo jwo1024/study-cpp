@@ -15,8 +15,11 @@ private:
 	typedef	typename	t_contain_pair::iterator 						t_contain_pair_iter;
 
 	Arr<T, std::allocator<T> >	_arr;
-	double						_sort_time;
-	
+	std::clock_t				_sort_time;
+
+	int		strToInt( std::string const &str ) const;
+
+	void	mergeInsertionSort();
 	void	makePair( t_contain_pair &pair_arr );
 	void	movePairFristToArr( t_contain_pair &pair_arr );
 
@@ -37,11 +40,10 @@ public:
 
 	int	insertUnsortedNumbers( char *argv[] );
 	int	insertUnsortedNumbers( Arr<T, std::allocator<T> > &arr );
-	int	insertUnsortedNumbers( int *arr	);
 
-	void	showArray();
+	void	showArray();// const;
 	void	sortArray();
-	double	getSortTime(); // double ? 
+	double	getSortTime();// const; // double ? 
 	void	clear();
 
 };

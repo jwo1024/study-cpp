@@ -6,26 +6,31 @@
 #include	<vector>
 #include	<deque>
 
+
+#include <unistd.h> 
+
 int	main(int argc, char *argv[])
 {
-	if (argc && argv)
-		;
-	int	arr[] = {-3, 7, 5, 0, 33, 4 ,2, -9, 8, 11, 10, 34 , -50, 32, 24, 1, 12};
-	std::vector<int>	vector_arr(arr, &arr[16]);
+	if (argc >= 2)
+	{
+		PmergeMe<int, std::vector >	vector_me;
+		PmergeMe<int, std::deque >  deque_me;
 
-	for (std::vector<int>::iterator iter = vector_arr.begin(); iter != vector_arr.end(); iter++)
-		std::cout << *iter << " ";
-	std::cout << std::endl;
+		if (vector_me.insertUnsortedNumbers(argv) == 1 \
+			&& deque_me.insertUnsortedNumbers(argv) == 1)
+		{
+			std::cout << "Before: ";
+			vector_me.showArray();
+			vector_me.sortArray();
+			deque_me.sortArray();
+			std::cout << "After:  ";
+			vector_me.showArray();
 
-//	mergeInsertionSort(vector_arr);
-
-
-	PmergeMe<int, std::vector >  merge_me;
-
-	merge_me.insertUnsortedNumbers(vector_arr);
-	merge_me.showArray();
-	merge_me.sortArray();
-	merge_me.showArray();
-
+			std::cout << "Time to process a range of 3000 elements with std::vector : "
+						<< 1000.0 * vector_me.getSortTime() / CLOCKS_PER_SEC << " ms" << std::endl;
+			std::cout << "Time to process a range of 3000 elements with std::deque : "
+						<< 1000.0 * deque_me.getSortTime() / CLOCKS_PER_SEC << " ms" << std::endl;
+		}
+	}
 	return 0;
 }
