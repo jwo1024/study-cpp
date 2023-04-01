@@ -13,7 +13,7 @@ private:
 	typedef	typename	t_contain_pair::iterator							t_contain_pair_iter;
 
 	Arr<T, std::allocator<T> >	_arr;
-	clock_t						_sort_time;
+	std::clock_t				_sort_time;
 
 	size_t	strToSizet( std::string const &str ) const;
 
