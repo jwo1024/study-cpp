@@ -26,9 +26,9 @@ int	main(int argc, char *argv[])
 			std::cout << "After:  ";
 			vector_me.showArray();
 
-			std::cout << "Time to process a range of 3000 elements with std::vector : "
+			std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : "
 						<< 1000.0 * vector_me.getSortTime() / CLOCKS_PER_SEC << " ms" << std::endl;
-			std::cout << "Time to process a range of 3000 elements with std::deque : "
+			std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque : "
 						<< 1000.0 * deque_me.getSortTime() / CLOCKS_PER_SEC << " ms" << std::endl;
 		}
 	}
