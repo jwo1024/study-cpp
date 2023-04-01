@@ -133,7 +133,6 @@ void	PmergeMe<T, Arr>::mergeInsertionSort()
 	}
 }
 
-
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 void	PmergeMe<T, Arr>::sortArray()
 {
@@ -216,6 +215,7 @@ int	PmergeMe<T, Arr>::binarySearch(size_t target, size_t low)
 	}
 	return low;
 }
+
 
 /* ======= Merge Sort ======= */
 

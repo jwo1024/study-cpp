@@ -46,7 +46,7 @@ void	BitcoinExchange::readCsvFile( std::string file_name )
 	if (scv_file.is_open())
 	{
 		getline(scv_file, line);
-		if (line == "date,exchange_rate") // space
+		if (line == "date,exchange_rate")
 		{
 			while (getline(scv_file, line))
 			{
@@ -65,7 +65,7 @@ void	BitcoinExchange::readCsvFile( std::string file_name )
 		std::cout << "Error: could not open csv file" << std::endl;
 }
 
-bool	BitcoinExchange::insertCsvData( std::string line ) // insertCsvFileLine
+bool	BitcoinExchange::insertCsvData( std::string line )
 {
 	std::string	date, str_exchange_rate;
 	double		exchange_rate;
