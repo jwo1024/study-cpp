@@ -3,7 +3,7 @@
 
 #include	<iostream>
 #include	<sstream>
-#include	<stirng>
+#include	<string>
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 PmergeMe<T, Arr>::PmergeMe( void )
