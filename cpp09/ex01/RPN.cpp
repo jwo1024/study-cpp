@@ -78,7 +78,7 @@ bool	RPN::calculate( std::string const &str )
 	else if (str.compare("-") == 0)
 		this->_num_stack.push(num2 - num1);
 	else if (str.compare("/") == 0)
-		this->_num_stack.push(num2 / num1);
+		this->_num_stack.push(num1 == 0 ? 0 : num2 / num1);
 	else if (str.compare("*") == 0)
 		this->_num_stack.push(num2 * num1);
 	return true;

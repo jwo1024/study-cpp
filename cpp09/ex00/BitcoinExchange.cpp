@@ -96,7 +96,7 @@ bool	BitcoinExchange::insertCsvData( std::string line )
 
 /* ===== READ INPUT DATA BASE ===== */
 
-void	BitcoinExchange::readInputDatabaseFile( std::string file_name ) // readDatabaseFile
+void	BitcoinExchange::readInputDatabaseFile( std::string file_name )
 {
 	std::string	line;
 	std::ifstream database;
@@ -226,7 +226,6 @@ bool	BitcoinExchange::isValidDate( std::string date ) const // YYYY-MM-DD
 	return false;
 }
 
-// YYYY-MM-DD
 bool	BitcoinExchange::isStrDateFormat( std::string const &str ) const
 {
 	size_t	pos;
