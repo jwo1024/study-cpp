@@ -13,8 +13,8 @@ int	main(int argc, char *argv[])
 {
 	if (argc >= 2)
 	{
-		PmergeMe<int, std::vector >	vector_me;
-		PmergeMe<int, std::deque >  deque_me;
+		PmergeMe<size_t, std::vector >	vector_me;
+		PmergeMe<size_t, std::deque >  deque_me;
 
 		if (vector_me.insertUnsortedNumbers(argv) == 1 \
 			&& deque_me.insertUnsortedNumbers(argv) == 1)

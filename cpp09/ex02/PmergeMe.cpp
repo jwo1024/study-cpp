@@ -3,7 +3,6 @@
 
 #include	<iostream>
 #include	<sstream>
-#include	<iomanip> // std::setprecision()
 
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
@@ -38,10 +37,11 @@ template<typename T, template<class _Tp, class _Allocator> class Arr>
 int	PmergeMe<T, Arr>::insertUnsortedNumbers( char *argv[] )
 {
 	
-	for (int idx = 1; argv[idx] ; idx++)
+	for (size_t idx = 1; argv[idx] ; idx++)
 	{
 		std::string	str = argv[idx];
-		int num = strToInt( argv[idx]);
+		size_t num = strToSizet( argv[idx]);
+	//	std::cout << "idx: " << argv[idx] << "Num" <<  num << std::endl; 
 		if (str.find_first_not_of("0123456789") != std::string::npos)
 		{
 			this->_arr.clear();
@@ -55,9 +55,9 @@ int	PmergeMe<T, Arr>::insertUnsortedNumbers( char *argv[] )
 }
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-int	PmergeMe<T, Arr>::strToInt( std::string const &str ) const
+size_t	PmergeMe<T, Arr>::strToSizet( std::string const &str ) const
 {
-	int					value;
+	size_t				value;
 	std::stringstream	stream;
 
 	stream.str(str);
@@ -75,22 +75,26 @@ int	PmergeMe<T, Arr>::insertUnsortedNumbers( Arr<T, std::allocator<T> > &arr )
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 void	PmergeMe<T, Arr>::showArray()
 {
-	int	cnt = 0;
+	std::string			str;
+	std::stringstream	ss_num;
 	for (t_arr_iter iter = this->_arr.begin(); iter != this->_arr.end(); iter++)
 	{
-		cnt += 1;
-		if (cnt > 7)
+		str.append(" ");
+		ss_num << *iter;
+		str.append(ss_num.str());
+		ss_num.str("");
+		if (str.size() > 20)
 		{
-			std::cout << " [...]";
+			str.append(" [...]");
 			break ;
 		}
-		std::cout << " " << *iter ;
 	}
-	std::cout << std::endl;
+	std::cout << str << std::endl;
+
 }
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-double	PmergeMe<T, Arr>::getSortTime()
+double	PmergeMe<T, Arr>::getSortTime() const
 {
 	return this->_sort_time;
 }
@@ -104,7 +108,7 @@ void	PmergeMe<T, Arr>::PmergeMe<T, Arr>::mergeInsertionSort()
 	t_contain_pair	pair_arr(this->_arr.size() / 2);
 	t_contain_pair	merge(this->_arr.size() / 2);
 	bool			arr_odd_num;
-	int				odd_num;
+	size_t			odd_num;
 
 	if (this->_arr.size() % 2)
 	{
@@ -124,16 +128,15 @@ void	PmergeMe<T, Arr>::PmergeMe<T, Arr>::mergeInsertionSort()
 	pair_arr.clear();
 	if (arr_odd_num)
 	{
-		int	pos;
+		size_t	pos;
 		pos = binarySearch(odd_num, 0);
-		insertArr(odd_num, pos);
-	//	this->_arr.insert(this->_arr.begin() + pos, odd_num);
+		this->_arr.insert(this->_arr.begin() + pos, odd_num);
 	}
 }
 
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::sortArray() //
+void	PmergeMe<T, Arr>::sortArray()
 {
 	if (this->_arr.empty())
 		return ;
@@ -149,8 +152,8 @@ void	PmergeMe<T, Arr>::sortArray() //
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 void	PmergeMe<T, Arr>::makePair( t_contain_pair &pair_arr )
 {
-	int	idx1 = 0;
-	int	idx2 = this->_arr.size() / 2;
+	size_t	idx1 = 0;
+	size_t	idx2 = this->_arr.size() / 2;
 
 	while (idx1 != this->_arr.size() / 2)
 	{
@@ -175,11 +178,7 @@ void	PmergeMe<T, Arr>::movePairFristToArr( t_contain_pair &pair_arr )
 	this->_arr.clear();
 	for (t_contain_pair_iter iter = pair_arr.begin(); iter != pair_arr.end(); iter++)
 		this->_arr.push_back((*iter).first);
-
 }
-
-
-
 
 
 /* ======= Binary Insertion Sort ======= */
@@ -187,23 +186,24 @@ void	PmergeMe<T, Arr>::movePairFristToArr( t_contain_pair &pair_arr )
 template<typename T, template<class _Tp, class _Allocator> class Arr>
 void	PmergeMe<T, Arr>::binaryInsertionSort(t_contain_pair &pair_arr)
 {
-	int	idx = pair_arr.size() - 1; // tail to first 
-	int	pos;
+	size_t	idx = pair_arr.size() - 1;
+	size_t	pos;
 
 	while (idx >= 0)
 	{
 		pos = binarySearch(pair_arr[idx].second, idx);
-	//	this->_arr.insert(this->_arr.begin() + pos, pair_arr[idx].second);
-		insertArr(pair_arr[idx].second, pos);
+		this->_arr.insert(this->_arr.begin() + pos, pair_arr[idx].second);
+		if (idx == 0)
+			break ;
 		idx--;
 	}
 }
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-int	PmergeMe<T, Arr>::binarySearch(int target, int low)
+int	PmergeMe<T, Arr>::binarySearch(size_t target, size_t low)
 {
-    int high = this->_arr.size() - 1;
-    int mid;
+    size_t high = this->_arr.size() - 1;
+    size_t mid;
 
 	while(low <= high)
 	{
@@ -218,30 +218,12 @@ int	PmergeMe<T, Arr>::binarySearch(int target, int low)
 	return low;
 }
 
-template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::insertArr(int target, int pos) // int? pos size_t? 
-{
-	int	tail;
-
-	this->_arr.push_back(0);
-	tail = this->_arr.size() - 1;
-	while (pos < tail)
-	{
-		this->_arr[tail] = this->_arr[tail - 1];
-		tail--;
-	}
-	this->_arr[tail] = target;
-	return ;
-}
-
-
-
 /* ======= Merge Sort ======= */
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::mergeSort(t_contain_pair &arr, t_contain_pair& merge, int start, int end)
+void	PmergeMe<T, Arr>::mergeSort(t_contain_pair &arr, t_contain_pair& merge, size_t start, size_t end)
 {
-	int	mid;
+	size_t	mid;
 
 	if (start < end)
 	{
@@ -253,12 +235,9 @@ void	PmergeMe<T, Arr>::mergeSort(t_contain_pair &arr, t_contain_pair& merge, int
 }
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::mergeArr(t_contain_pair &arr, t_contain_pair &merge, int start, int end)
+void	PmergeMe<T, Arr>::mergeArr(t_contain_pair &arr, t_contain_pair &merge, size_t start, size_t end)
 {
-	int	mid;
-	int	fro;
-	int	bac;
-	int	mer;
+	size_t	mid, fro, bac, mer;
 
 	mid = (start + end) / 2;
 	fro = start;
@@ -275,24 +254,16 @@ void	PmergeMe<T, Arr>::mergeArr(t_contain_pair &arr, t_contain_pair &merge, int 
 		pasteArrNum(arr, merge, &fro, &mer);
 	while (bac <= end)
 		pasteArrNum(arr, merge, &bac, &mer);
-	
 	fro = 0;
 	while (fro < mer)
 		pasteArrNum(merge, arr, &fro, &start);
 }
 
 template<typename T, template<class _Tp, class _Allocator> class Arr>
-void	PmergeMe<T, Arr>::pasteArrNum(t_contain_pair &from_arr, t_contain_pair &to_arr, int *f, int *t) // pair.
+void	PmergeMe<T, Arr>::pasteArrNum(t_contain_pair &from_arr, t_contain_pair &to_arr, size_t *f, size_t *t) // pair.
 {
 	to_arr[*t].first = from_arr[*f].first;
 	to_arr[*t].second = from_arr[*f].second;
 	(*f)++;
 	(*t)++;
 }
-
-
-
-//template class PmergeMe<std::Vector<int> >;
-//template class PmergeMe<std::Deque<int> >;
-
-
