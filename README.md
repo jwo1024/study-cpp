@@ -98,7 +98,7 @@
 🎯 09
 --
 - STL 
-- STL 활용과 Merge-insertion sort ([Ford-Jonson algorithm](https://en.wikipedia.org/wiki/Merge-insertion_sort))
+- STL 활용과 Merge-insertion sort ([Ford-Johnson algorithm](https://en.wikipedia.org/wiki/Merge-insertion_sort))
 
 > Merge sort와 Insertion sort 에 대해 이해하고
 > Merge-insertion sort를 하는 클래스를 STL 을 활용하여 만든다.
